@@ -10,6 +10,10 @@
   font-size: 24px;
   margin-bottom: 5px;
 }
+.footer-logo {
+  max-width: 150px;
+  margin-top: 0.5rem; /* Equivalente al espacio superior */
+}
 
 .footer h6 {
   font-size: 13px;

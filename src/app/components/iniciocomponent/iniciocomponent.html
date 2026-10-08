@@ -1,22 +1,114 @@
 <div class="container py-4">
 
-  <!-- titulo -->
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="fw-bold">
-      Lo mas destacado en hoteles de Bogotá
-    </h2>
-    <a href="#" class="text-primary fw-bold text-decoration-none">
-      Ver más ofertas →
-    </a>
+  <!-- la barra de busqueda -->
+  <header class="hero-section text-white text-center py-5">
+    <div class="container py-4">
+      <span class="badge hero-badge mb-3">los mejores alojamientos que necesitas</span>
+      <h1 class="display-5 fw-bold mb-2 animate__animated animate__fadeIn">
+        Encuentra tu próximo<br>
+        <span class="text-success">alojamiento</span>
+      </h1>
+
+      <!-- Buscador central -->
+      <div class="bg-white p-2 rounded-pill shadow-lg d-flex align-items-center mx-auto mb-4 search-box-container">
+        <span class="ps-3 text-muted">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <input type="text" class="form-control border-0 shadow-none px-2" placeholder="¿A dónde quieres viajar?">
+        <button class="btn btn-primary rounded-pill px-4 py-2 search-btn">Buscar alojamientos</button>
+      </div>
+      <p class="text-light hero-description mb-4 animate__animated animate__fadeInUp animate__fast">
+        Apartamentos, casas, cabañas, villas y fincas en las mejores ciudades y destinos de Colombia.
+      </p>
+      <!-- Estadísticas -->
+      <div class="d-flex justify-content-center gap-5 mt-4">
+        <div>
+          <h5 class="fw-bold mb-0">8+</h5>
+          <small class="color-blanco-tamanio">Alojamientos</small>
+        </div>
+        <div>
+          <h5 class="fw-bold mb-0">
+            <i class="fa-solid fa-earth-americas"></i>
+          </h5>
+          <small class="color-blanco-tamanio">Ciudades</small>
+        </div>
+        <div>
+          <h5 class="fw-bold mb-0">4.7
+            <i class="fa-solid fa-star"></i></h5>
+          <small class="color-blanco-tamanio">Calificación media</small>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- 3. DESTINOS POPULARES -->
+  <div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h3 class="fw-bold mb-0">Destinos populares</h3>
+      </div>
+      <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill px-3">Ver todos</a>
+    </div>
+
+    <!-- Tarjetas de destinos -->
+    <div class="container">
+      <div class="row g-3 animate__animated animate__slideInUp">
+
+        <div class="col-6 col-md-2 text-center">
+          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
+            <div class="fs-2 mb-2">🏖️</div>
+            <span class="fw-bold small text-dark">Cartagena</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2 text-center">
+          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
+            <div class="fs-2 mb-2">🌺</div>
+            <span class="fw-bold small text-dark">Medellín</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2 text-center">
+          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
+            <div class="fs-2 mb-2">🌊</div>
+            <span class="fw-bold small text-dark">Santa Marta</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2 text-center">
+          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
+            <div class="fs-2 mb-2">🏙️</div>
+            <span class="fw-bold small text-dark">Bogotá</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2 text-center">
+          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
+            <div class="fs-2 mb-2">⛪</div>
+            <span class="fw-bold small text-dark">Villa de Leyva</span>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2 text-center">
+          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
+            <div class="fs-2 mb-2">☕</div>
+            <span class="fw-bold small text-dark">Salento</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-  <!-- titulo -->
-  <div class="mb-4">
-    <img src="imagen/logoRecortado.png" class="img-fluid rounded shadow-sm w-100" alt="Banner promocional de hoteles">
-  </div>
-  <div>
-    <h1>¿Quienes somos? </h1>
-    <h4>Somos una empresa la cual esta dedicada a ayudar a nuestros usuarios a conseguir su mejor lugar de hospedaje. <br> <br> Nuestro objetivo principal es mostrarle los mejores lugares y los que estén a tu disposición.</h4>
-  </div>
+
+
+
+
+
+
+
+
+
 
   <!-- rayita -->
   <div class="d-flex gap-4 border-bottom mb-4 pb-2 overflow-auto">
@@ -80,11 +172,16 @@
         <div class="card shadow-sm h-100 card-hover">
           <div id="carouselGrandHyatt" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="3" aria-label="Slide 4"></button>
-              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="0" class="active"
+                      aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="3"
+                      aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselGrandHyatt" data-bs-slide-to="4"
+                      aria-label="Slide 5"></button>
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -134,11 +231,16 @@
         <div class="card shadow-sm h-100 card-hover">
           <div id="carouselFourSeasons" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="3" aria-label="Slide 4"></button>
-              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="0" class="active"
+                      aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="3"
+                      aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselFourSeasons" data-bs-slide-to="4"
+                      aria-label="Slide 5"></button>
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -240,5 +342,36 @@
       </div>
     </div>
   </div>
+  <!-- rayita -->
+  <div class="d-flex gap-4 border-bottom mb-4 pb-2 overflow-auto">
+  </div>
+
+  <!-- titulo -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">
+      Sorprendete con nosotros
+    </h2>
+    <a href="https://www.instagram.com/horizont_viajes?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" class="text-primary fw-bold text-decoration-none">
+      <i class="fa-brands fa-instagram"></i>
+      Ver pagina de instagram
+    </a>
+
+  </div>
+  <!-- titulo -->
+  <div class="mb-4">
+    <img src="imagen/anunciopublicitarioplaya.jpg" class="img-fluid rounded shadow-sm w-100" alt="Banner promocional de hoteles">
+  </div>
+  <div>
+
+
+    <h2 class="fw-bold">
+      Lo que nosotros buscamos
+    </h2>
+    <div class="mb-4">
+      <img src="imagen/anunciopublicitarioMedellin.jpg" class="img-fluid rounded shadow-sm w-100" alt="Banner promocional de hoteles">
+    </div>
+
+  </div>
 </div>
+
 
