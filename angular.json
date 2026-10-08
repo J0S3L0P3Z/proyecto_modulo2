@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "PROYECTOMODULODOS": {
+    "proyectomodulo2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -66,10 +66,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "PROYECTOMODULODOS:build:production"
+              "buildTarget": "proyectomodulo2:build:production"
             },
             "development": {
-              "buildTarget": "PROYECTOMODULODOS:build:development"
+              "buildTarget": "proyectomodulo2:build:development"
             }
           },
           "defaultConfiguration": "development"

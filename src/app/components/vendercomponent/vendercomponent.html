@@ -1,0 +1,71 @@
+<nav class="navbar bg-warning">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">
+      <img src="/imagen/logo%20mercado%20libre.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Mercado Libre
+    </a>
+  </div>
+</nav>
+
+<article class="card my-4 mx-auto p-3 shadow-sm custom-article-card">
+  <div class="contenedor-imagen">
+    <img src="images/entrega%20Mercado%20Libre.jpg" alt="Entrega de paquete" class="dimension-images">
+  </div>
+
+  <div class="card-body">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Agregar producto para vender</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Datos Del Producto</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Precio:</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">COP
+
+                  <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                  </span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Descripción:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Descripción:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Cantidad:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">URL de imagen:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Subir Datos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
