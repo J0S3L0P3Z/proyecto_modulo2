@@ -1,168 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< Updated upstream
-  <component name="ChangeListManager">
-    <list default="true" id="89fe420e-c933-4a93-9c7c-3bfe682d7059" name="Changes" comment="" />
-=======
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afe31c18-10b7-4c27-9cac-dcb017d65463" name="Changes" comment="" />
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="ANDRESFELIPECASTROGARCIA" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-<<<<<<< Updated upstream
-=======
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
->>>>>>> Stashed changes
-  </component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
-<<<<<<< Updated upstream
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="3KVw35tm3GAZFmNYT6XJIWguLo2" />
-=======
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000045364651298" />
-      <entry key="MS500" value="1.0853775160471497" />
-      <entry key="S2" value="1.5405500089669513" />
-      <entry key="S5" value="1.7819453248745962" />
-      <entry key="S10" value="1.8930420460233437" />
-      <entry key="S30" value="2.26262442239344" />
-      <entry key="S60" value="3.20060048664756" />
-      <entry key="M2" value="5.7686169420287605" />
-      <entry key="M5" value="12.417018072814828" />
-      <entry key="M10" value="18.510508578437936" />
-      <entry key="M15" value="21.667595818405818" />
-      <entry key="M30" value="25.7228425880386" />
-      <entry key="H1" value="28.183887542896485" />
-      <entry key="H2" value="29.543979577569697" />
-      <entry key="H4" value="30.2595169108896" />
-      <entry key="D1" value="30.8748112073154" />
-      <entry key="W1" value="30.982071851354476" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.973901915244757E-106" />
-      <entry key="MS500" value="8.696398718263859E-22" />
-      <entry key="S2" value="5.430438014685879E-6" />
-      <entry key="S5" value="0.007833104931285285" />
-      <entry key="S10" value="0.08850482998888191" />
-      <entry key="S30" value="0.4457991129551178" />
-      <entry key="S60" value="0.6890248668763704" />
-      <entry key="M2" value="1.0706282155043445" />
-      <entry key="M5" value="2.0388607426679677" />
-      <entry key="M10" value="2.790519612968922" />
-      <entry key="M15" value="3.131289587445957" />
-      <entry key="M30" value="3.5309429037442386" />
-      <entry key="H1" value="3.7560685109075713" />
-      <entry key="H2" value="3.8755858959" />
-      <entry key="H4" value="3.9371682105543666" />
-      <entry key="D1" value="3.989440171200586" />
-      <entry key="W1" value="3.998489286837774" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7578582832729908" />
-      <entry key="MS500" value="0.9531378181183094" />
-      <entry key="S2" value="1.27630934453156" />
-      <entry key="S5" value="1.6083792162183346" />
-      <entry key="S10" value="1.8518573325382046" />
-      <entry key="S30" value="2.621565832187171" />
-      <entry key="S60" value="3.8276391866581205" />
-      <entry key="M2" value="6.789164677726053" />
-      <entry key="M5" value="14.415586997233934" />
-      <entry key="M10" value="21.272892666624465" />
-      <entry key="M15" value="24.777683237572568" />
-      <entry key="M30" value="29.241737204613734" />
-      <entry key="H1" value="31.933520974872145" />
-      <entry key="H2" value="33.416238350669104" />
-      <entry key="H4" value="34.19499325921366" />
-      <entry key="D1" value="34.863965391602726" />
-      <entry key="W1" value="34.98052018366856" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1,
-  &quot;fromUser&quot;: false
-}</component>
-  <component name="ProjectId" id="3KO6cDh6vs1KAXUWZf86GLDWABN" />
->>>>>>> Stashed changes
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-<<<<<<< Updated upstream
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;joselop__branch&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2026.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;
-  }
-}</component>
-  <component name="RunManager">
-=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "joselop__branch",
     "javascript.preferred.runtime.type.id": "node",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/josed/OneDrive/Documentos/GitHub/proyecto_modulo2/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
     "npm.start.executor": "Run",
-    "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2026.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\josed\OneDrive\Documentos\GitHub\proyecto_modulo2\src" />
-    </key>
-  </component>
-  <component name="RunManager" selected="npm.start">
-    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
-      <method v="2" />
-    </configuration>
-    <configuration name="Angular CLI Server" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -172,64 +39,13 @@
       <envs />
       <method v="2" />
     </configuration>
->>>>>>> Stashed changes
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-<<<<<<< Updated upstream
-      <node-interpreter value="$PROJECT_DIR$/../Node/node" />
-=======
-      <node-interpreter value="D:/Node/node" />
->>>>>>> Stashed changes
-      <package-manager value="D:\Node\npm.cmd" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.start" />
-<<<<<<< Updated upstream
-=======
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.start" />
->>>>>>> Stashed changes
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.9437.145" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-<<<<<<< Updated upstream
-      <changelist id="89fe420e-c933-4a93-9c7c-3bfe682d7059" name="Changes" comment="" />
-      <created>1791655842020</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1791655842020</updated>
-      <workItem from="1791655843903" duration="406000" />
-=======
-      <changelist id="afe31c18-10b7-4c27-9cac-dcb017d65463" name="Changes" comment="" />
-      <created>1791416347580</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1791416347580</updated>
-      <workItem from="1791416349266" duration="1283000" />
-      <workItem from="1791476216281" duration="4615000" />
->>>>>>> Stashed changes
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>
