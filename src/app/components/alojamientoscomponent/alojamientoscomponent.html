@@ -1,11 +1,8 @@
 <div class="container mt-4">
 
   <div class="encabezado">
-
     <h2>Alojamientos disponibles</h2>
-
     <p>{{ alojamientosFiltrados.length }} resultados encontrados</p>
-
   </div>
 
   <div class="row">
@@ -20,7 +17,6 @@
         </h4>
 
         <div class="campo">
-
           <label>Ubicación</label>
 
           <input
@@ -29,11 +25,9 @@
             [(ngModel)]="ubicacion"
             (input)="filtrarAlojamientos()"
             placeholder="Ej. Bogotá">
-
         </div>
 
         <div class="campo">
-
           <label>Tipo de alojamiento</label>
 
           <select
@@ -44,19 +38,15 @@
             <option value="">Todos los tipos</option>
 
             @for (tipo of tipos; track tipo) {
-
               <option [value]="tipo">
                 {{ tipo }}
               </option>
-
             }
 
           </select>
-
         </div>
 
         <div class="campo">
-
           <label>Número de huéspedes</label>
 
           <input
@@ -66,12 +56,10 @@
             [(ngModel)]="huespedes"
             (input)="filtrarAlojamientos()"
             placeholder="Ej. 4">
-
         </div>
 
         <div class="campo">
-
-          <label>Precio máximo (miles COP/noche)</label>
+          <label>Precio máximo (COP/noche)</label>
 
           <input
             type="number"
@@ -79,11 +67,11 @@
             min="1"
             [(ngModel)]="precioMaximo"
             (input)="filtrarAlojamientos()"
-            placeholder="Ej. 300">
-
+            placeholder="Ej. 300000">
         </div>
 
         <button
+          type="button"
           class="btn btn-limpiar w-100"
           (click)="limpiarFiltros()">
 
@@ -117,11 +105,8 @@
                 </span>
 
                 <span class="capacidad">
-
                   <i class="fas fa-users"></i>
-
                   {{ alojamiento.capacidad }}
-
                 </span>
 
               </div>
@@ -133,47 +118,44 @@
                 </h5>
 
                 <p class="ubicacion">
-
                   <i class="fas fa-map-marker-alt"></i>
-
                   {{ alojamiento.ciudad }}
-
                 </p>
 
                 <p class="calificacion">
-
                   <strong>
-                    Calificación: {{ alojamiento.calificacion }}
+                    <i class="fas fa-star"></i>
+                    Calificación: {{ alojamiento.calificacion }}/5
                   </strong>
-
                 </p>
 
                 <div class="servicios">
 
                   @for (servicio of alojamiento.servicios; track servicio) {
-
                     <span>
                       {{ servicio }}
                     </span>
-
                   }
 
                 </div>
 
                 <div class="precio">
-
                   <strong>
-                    ${{ alojamiento.precioNoche }}
+                    {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
                   </strong>
 
                   <span>
                     / noche
                   </span>
-
                 </div>
 
-                <button class="btn btn-ver w-100">
+                <button
+                  type="button"
+                  class="btn btn-ver w-100"
+                  [routerLink]="['/alojamientos', alojamiento.id]">
+
                   Ver alojamiento
+
                 </button>
 
               </div>

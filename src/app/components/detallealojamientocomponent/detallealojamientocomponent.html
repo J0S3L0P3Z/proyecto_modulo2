@@ -1,0 +1,231 @@
+<div class="container detalle-container">
+
+  @if (cargando) {
+    <div class="mensaje">
+      <p>Cargando alojamiento...</p>
+    </div>
+  } @else if (alojamiento) {
+
+    <a routerLink="/alojamientos" class="volver">
+      <i class="fas fa-arrow-left"></i>
+      Volver a alojamientos
+    </a>
+
+    <div class="encabezado">
+      <div>
+        <h2>{{ alojamiento.nombre }}</h2>
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          {{ alojamiento.ubicacion }}, {{ alojamiento.ciudad }}
+        </p>
+      </div>
+
+      <span class="calificacion">
+        <i class="fas fa-star"></i>
+        {{ alojamiento.calificacion }}/5
+      </span>
+    </div>
+
+    <div class="galeria">
+      @if (alojamiento.imagenes && alojamiento.imagenes.length > 0) {
+        @for (imagen of alojamiento.imagenes; track imagen) {
+          <img [src]="imagen" [alt]="alojamiento.nombre">
+        }
+      } @else {
+        <img [src]="alojamiento.imagenPrincipal" [alt]="alojamiento.nombre">
+      }
+    </div>
+
+    <div class="contenido">
+
+      <div class="informacion">
+
+        <section class="seccion">
+          <span class="tipo">{{ alojamiento.tipo }}</span>
+          <h3>Acerca de este alojamiento</h3>
+          <p>{{ alojamiento.descripcion }}</p>
+        </section>
+
+        <section class="seccion">
+          <h3>Características</h3>
+
+          <div class="caracteristicas">
+            <div>
+              <i class="fas fa-users"></i>
+              {{ alojamiento.capacidad }} huéspedes
+            </div>
+
+            <div>
+              <i class="fas fa-bed"></i>
+              {{ alojamiento.habitaciones }} habitaciones
+            </div>
+
+            <div>
+              <i class="fas fa-bed"></i>
+              {{ alojamiento.camas }} camas
+            </div>
+
+            <div>
+              <i class="fas fa-bath"></i>
+              {{ alojamiento.banos }} baños
+            </div>
+          </div>
+        </section>
+
+        <section class="seccion">
+          <h3>Servicios</h3>
+
+          @if (alojamiento.servicios && alojamiento.servicios.length > 0) {
+            <div class="servicios-horizontal">
+              @for (servicio of alojamiento.servicios; track servicio) {
+                <div class="servicio-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>{{ servicio }}</span>
+                </div>
+              }
+            </div>
+          } @else {
+            <p>No hay servicios registrados.</p>
+          }
+        </section>
+
+        <section class="seccion">
+          <h3>Reglas del alojamiento</h3>
+
+          @if (alojamiento.reglas && alojamiento.reglas.length > 0) {
+            <div class="lista">
+              @for (regla of alojamiento.reglas; track regla) {
+                <div>
+                  <i class="fas fa-info-circle"></i>
+                  {{ regla }}
+                </div>
+              }
+            </div>
+          } @else {
+            <p>No hay reglas registradas.</p>
+          }
+        </section>
+
+        <section class="seccion resenas">
+          <h3>
+            <i class="fas fa-star"></i>
+            Reseñas de huéspedes
+            <span class="total-resenas">({{ resenas.length }})</span>
+          </h3>
+
+          <div class="formulario-resena">
+            <h4>Comparte tu experiencia</h4>
+
+            <form (ngSubmit)="crearResena()">
+              <div class="campo-resena">
+                <label for="nombreResena">Tu nombre</label>
+                <input
+                  id="nombreResena"
+                  type="text"
+                  class="form-control"
+                  name="nombreResena"
+                  [(ngModel)]="nombreResena"
+                  placeholder="Escribe tu nombre"
+                  required>
+              </div>
+
+              <div class="campo-resena">
+                <label for="calificacionResena">Tu calificación</label>
+                <select
+                  id="calificacionResena"
+                  class="form-select"
+                  name="calificacionResena"
+                  [(ngModel)]="calificacionResena"
+                  required>
+                  <option [ngValue]="5">5 estrellas - Excelente</option>
+                  <option [ngValue]="4">4 estrellas - Muy bueno</option>
+                  <option [ngValue]="3">3 estrellas - Bueno</option>
+                  <option [ngValue]="2">2 estrellas - Regular</option>
+                  <option [ngValue]="1">1 estrella - Malo</option>
+                </select>
+              </div>
+
+              <div class="campo-resena">
+                <label for="comentarioResena">Tu comentario</label>
+                <textarea
+                  id="comentarioResena"
+                  class="form-control"
+                  name="comentarioResena"
+                  [(ngModel)]="comentarioResena"
+                  rows="3"
+                  placeholder="¿Cómo fue tu experiencia?"
+                  required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-publicar-resena">
+                <i class="fas fa-paper-plane"></i>
+                Publicar reseña
+              </button>
+
+              @if (mensajeResena) {
+                <p class="mensaje-resena">{{ mensajeResena }}</p>
+              }
+            </form>
+          </div>
+
+          <div class="lista-resenas">
+            @if (resenas.length > 0) {
+              @for (resena of resenas; track resena.id) {
+                <div class="resena">
+                  <div class="resena-encabezado">
+                    <strong>{{ resena.usuario }}</strong>
+
+                    <span class="estrellas">
+                      <i class="fas fa-star"></i>
+                      {{ resena.calificacion }}/5
+                    </span>
+                  </div>
+
+                  <p>{{ resena.comentario }}</p>
+                </div>
+              }
+            } @else {
+              <p>Este alojamiento todavía no tiene reseñas.</p>
+            }
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="tarjeta-precio">
+        <p>Precio por noche</p>
+
+        <h3>
+          {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
+        </h3>
+
+        <div class="detalle-precio">
+          <span>Tarifa de limpieza</span>
+          <strong>
+            {{ alojamiento.tarifaLimpieza | currency:'COP':'symbol-narrow':'1.0-0' }}
+          </strong>
+        </div>
+
+        <hr>
+
+        <p class="nota-precio">
+          El precio corresponde a una noche. La tarifa de limpieza se cobra aparte.
+        </p>
+      </aside>
+
+    </div>
+
+  } @else {
+
+    <div class="mensaje">
+      <h3>Alojamiento no disponible</h3>
+      <p>Este alojamiento no existe o ya no está activo.</p>
+
+      <a routerLink="/alojamientos" class="boton-volver">
+        Volver a alojamientos
+      </a>
+    </div>
+
+  }
+
+</div>

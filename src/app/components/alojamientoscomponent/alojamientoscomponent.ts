@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlojamientoService } from '../../services/alojamientoservice';
 
 @Component({
@@ -7,7 +7,7 @@ import { AlojamientoService } from '../../services/alojamientoservice';
   styleUrl: './alojamientoscomponent.css',
   templateUrl: './alojamientoscomponent.html',
 })
-export class Alojamientoscomponent {
+export class Alojamientoscomponent implements OnInit {
 
   alojamientos: any[] = [];
   alojamientosFiltrados: any[] = [];
@@ -26,27 +26,30 @@ export class Alojamientoscomponent {
     'Finca'
   ];
 
-  constructor(private alojamientoService: AlojamientoService) {
+  constructor(private alojamientoService: AlojamientoService) {}
+
+  ngOnInit(): void {
     this.cargarAlojamientos();
   }
 
   cargarAlojamientos(): void {
+    this.alojamientoService.obtenerLista().subscribe({
+      next: data => {
+        this.alojamientos = [];
 
-    this.alojamientoService.obtenerAlojamientos().subscribe(data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].activo) {
+            this.alojamientos.push(data[i]);
+          }
+        }
 
-      this.alojamientos = data.alojamientos.filter(
-        (alojamiento: any) => alojamiento.activo
-      );
-
-      this.alojamientosFiltrados = this.alojamientos;
-
+        this.filtrarAlojamientos();
+      }
     });
-
   }
 
   filtrarAlojamientos(): void {
-
-    let ubicacionBuscada = this.ubicacion.toLowerCase();
+    const ubicacionBuscada = this.ubicacion.trim().toLowerCase();
 
     this.alojamientosFiltrados = this.alojamientos.filter(
       (alojamiento: any) => {
@@ -54,8 +57,8 @@ export class Alojamientoscomponent {
         if (
           ubicacionBuscada &&
           !(
-            alojamiento.ciudad.toLowerCase().includes(ubicacionBuscada) ||
-            alojamiento.ubicacion.toLowerCase().includes(ubicacionBuscada)
+            (alojamiento.ciudad || '').toLowerCase().includes(ubicacionBuscada) ||
+            (alojamiento.ubicacion || '').toLowerCase().includes(ubicacionBuscada)
           )
         ) {
           return false;
@@ -70,7 +73,7 @@ export class Alojamientoscomponent {
 
         if (
           this.huespedes &&
-          alojamiento.capacidad !== Number(this.huespedes)
+          alojamiento.capacidad < Number(this.huespedes)
         ) {
           return false;
         }
@@ -83,21 +86,16 @@ export class Alojamientoscomponent {
         }
 
         return true;
-
       }
     );
-
   }
 
   limpiarFiltros(): void {
-
     this.ubicacion = '';
     this.tipoSeleccionado = '';
     this.huespedes = '';
     this.precioMaximo = '';
 
-    this.alojamientosFiltrados = this.alojamientos;
-
+    this.filtrarAlojamientos();
   }
-
 }
