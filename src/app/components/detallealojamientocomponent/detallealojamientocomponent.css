@@ -1,0 +1,455 @@
+:host {
+  display: block;
+  background: #f8fafc;
+}
+
+.pagina {
+  font-family: 'Montserrat', sans-serif;
+  color: #0f172a;
+  min-height: 70vh;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.gris {
+  color: #64748b;
+}
+
+.mensaje-estado {
+  text-align: center;
+  color: #64748b;
+  padding: 60px 0;
+}
+
+.no-encontrado {
+  text-align: center;
+  background: white;
+  border: 1px dashed #cbd5e1;
+  border-radius: 20px;
+  padding: 56px 20px;
+}
+
+.no-encontrado-icono {
+  font-size: 48px;
+}
+
+.btn-volver {
+  background: #1a6aa8;
+  color: white;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px 24px;
+}
+
+.btn-volver:hover {
+  background: #14578b;
+  color: white;
+}
+
+.enlace-volver {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #1a6aa8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.enlace-volver:hover {
+  text-decoration: underline;
+}
+
+.imagen-principal {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 24px;
+  background: #e2e8f0;
+  display: block;
+}
+
+.miniaturas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 16px 0 32px;
+}
+
+.miniatura {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  background: #e2e8f0;
+  opacity: 0.8;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.miniatura:hover {
+  opacity: 1;
+}
+
+.miniatura.activa {
+  border-color: #1a6aa8;
+  opacity: 1;
+}
+
+.etiqueta-tipo {
+  display: inline-block;
+  background: #e8f1fb;
+  color: #1a6aa8;
+  font-weight: 700;
+  border-radius: 50rem;
+  padding: 8px 20px;
+  margin-bottom: 12px;
+}
+
+.nombre {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0 0 14px;
+}
+
+.linea-calificacion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.estrellas {
+  color: #f59e0b;
+  letter-spacing: 2px;
+}
+
+.estrellas .vacia {
+  color: #e2e8f0;
+}
+
+.separador {
+  color: #94a3b8;
+  margin: 0 4px;
+}
+
+.tarjetas-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px 10px;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+}
+
+.info-icono {
+  font-size: 28px;
+}
+
+.info strong {
+  font-size: 20px;
+}
+
+.seccion {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 36px 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.descripcion {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.lista-servicios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 24px;
+}
+
+.lista-servicios li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+
+.check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #d1fae5;
+  color: #059669;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lista-reglas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-reglas li {
+  padding: 8px 0;
+  font-size: 16px;
+  color: #334155;
+}
+
+.flecha {
+  color: #94a3b8;
+  margin-right: 10px;
+}
+
+.sin-resenas {
+  background: white;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  color: #64748b;
+}
+
+.resumen-resenas {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 20px;
+  padding: 20px 28px;
+  margin-bottom: 20px;
+  color: #92400e;
+}
+
+.nota {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.resena {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 22px 26px;
+  margin-bottom: 16px;
+}
+
+.resena-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1a6aa8;
+  color: white;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resena-autor {
+  flex: 1;
+  font-size: 18px;
+}
+
+.resena-texto {
+  margin: 14px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.panel-reserva {
+  position: sticky;
+  top: 90px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+}
+
+.precio {
+  margin-bottom: 20px;
+}
+
+.precio-valor {
+  font-size: 34px;
+  font-weight: 800;
+  color: #1a6aa8;
+}
+
+.etiqueta {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #334155;
+}
+
+.campo {
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-cotizar,
+.btn-reservar {
+  background: #1a6aa8;
+  color: white;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 20px;
+}
+
+.btn-cotizar:hover,
+.btn-reservar:hover {
+  background: #14578b;
+  color: white;
+}
+
+.btn-secundario {
+  background: white;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.btn-secundario:hover {
+  background: #f1f5f9;
+}
+
+.nota-cargo {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 12px 0 0;
+}
+
+.alerta-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.alerta-error p {
+  margin: 4px 0;
+}
+
+.texto-error {
+  color: #991b1b;
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+
+.cotizacion {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.cotizacion h5 {
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.linea {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 15px;
+  color: #475569;
+}
+
+.linea-total {
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.formulario-reserva {
+  margin-top: 8px;
+}
+
+.reserva-exitosa {
+  text-align: center;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 16px;
+  padding: 24px 16px;
+}
+
+.exito-icono {
+  font-size: 40px;
+}
+
+.reserva-exitosa p {
+  margin: 4px 0;
+  color: #334155;
+  word-break: break-all;
+}
+
+@media (max-width: 991px) {
+  .panel-reserva {
+    position: static;
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .imagen-principal {
+    height: 260px;
+  }
+
+  .nombre {
+    font-size: 30px;
+  }
+
+  .tarjetas-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lista-servicios {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,297 @@
+<div class="pagina">
+  <div class="container py-4">
+    @if (cargando) {
+      <p class="mensaje-estado">Cargando alojamiento...</p>
+    }
+
+    @if (!cargando && !alojamiento) {
+      <div class="no-encontrado">
+        <div class="no-encontrado-icono">🏚️</div>
+        <h3>No encontramos este alojamiento</h3>
+        <p>Puede que ya no esté disponible.</p>
+        <a class="btn btn-volver" routerLink="/alojamientos">Volver a alojamientos</a>
+      </div>
+
+    }
+
+    @if (alojamiento) {
+      <a class="enlace-volver" routerLink="/alojamientos">← Volver a alojamientos</a>
+      <div class="galeria">
+        <img
+          class="imagen-principal"
+          [src]="imagenSeleccionada"
+          [alt]="alojamiento.nombre">
+        <div class="miniaturas">
+          @for (imagen of alojamiento.imagenes; track imagen) {
+            @if (imagen === imagenSeleccionada) {
+              <img
+                class="miniatura activa"
+                [src]="imagen"
+                [alt]="alojamiento.nombre"
+                (click)="seleccionarImagen(imagen)">
+            }
+            @if (imagen !== imagenSeleccionada) {
+              <img
+                class="miniatura"
+                [src]="imagen"
+                [alt]="alojamiento.nombre"
+                (click)="seleccionarImagen(imagen)">
+            }
+          }
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8">
+          <span class="etiqueta-tipo">{{ alojamiento.tipo }}</span>
+          <h1 class="nombre">{{ alojamiento.nombre }}</h1>
+          <div class="linea-calificacion">
+            <span class="estrellas">
+              @for (e of estrellasLlenas(alojamiento.calificacion); track e) {
+                <i class="fas fa-star"></i>
+              }
+              @for (e of estrellasVacias(alojamiento.calificacion); track e) {
+                <i class="fas fa-star vacia"></i>
+              }
+            </span>
+            <strong>{{ alojamiento.calificacion }}</strong>
+            <span class="gris">({{ resenas.length }} reseña(s))</span>
+            <span class="separador">·</span>
+            <span class="gris">📍 {{ alojamiento.ubicacion }}</span>
+          </div>
+
+          <div class="tarjetas-info">
+            <div class="info">
+              <span class="info-icono">👥</span>
+              <strong>{{ alojamiento.capacidad }} pers.</strong>
+              <span class="gris">Capacidad</span>
+            </div>
+
+            <div class="info">
+              <span class="info-icono">🛏️</span>
+              <strong>{{ alojamiento.habitaciones }}</strong>
+              <span class="gris">Habitaciones</span>
+            </div>
+
+            <div class="info">
+              <span class="info-icono">🛌</span>
+              <strong>{{ alojamiento.camas }}</strong>
+              <span class="gris">Camas</span>
+            </div>
+
+            <div class="info">
+              <span class="info-icono">🚿</span>
+              <strong>{{ alojamiento.banos }}</strong>
+              <span class="gris">Baños</span>
+            </div>
+
+          </div>
+
+          <h3 class="seccion">Descripción</h3>
+          <p class="descripcion">{{ alojamiento.descripcion }}</p>
+          <p class="gris">📍 {{ alojamiento.ubicacion }}</p>
+          <h3 class="seccion">Servicios incluidos</h3>
+          <ul class="lista-servicios">
+
+            @for (servicio of alojamiento.servicios; track servicio) {
+              <li>
+                <span class="check">✓</span>
+                {{ servicio }}
+              </li>
+            }
+          </ul>
+          <h3 class="seccion">Reglas del alojamiento</h3>
+          <ul class="lista-reglas">
+            @for (regla of alojamiento.reglas; track regla) {
+
+              <li>
+                <span class="flecha">›</span>
+                {{ regla }}
+              </li>
+
+            }
+
+          </ul>
+          <h3 class="seccion">Reseñas</h3>
+          @if (resenas.length === 0) {
+
+            <div class="sin-resenas">
+              Aún no hay reseñas para este alojamiento.
+            </div>
+
+          }
+
+          @if (resenas.length > 0) {
+            <div class="resumen-resenas">
+              <span class="nota">{{ alojamiento.calificacion }}</span>
+              <div>
+
+                <div class="estrellas">
+                  @for (e of estrellasLlenas(alojamiento.calificacion); track e) {
+                    <i class="fas fa-star"></i>
+                  }
+                  @for (e of estrellasVacias(alojamiento.calificacion); track e) {
+                    <i class="fas fa-star vacia"></i>
+                  }
+                </div>
+
+                <span>Basado en {{ resenas.length }} reseña(s)</span>
+              </div>
+            </div>
+            @for (resena of resenas; track resena.id) {
+              <div class="resena">
+                <div class="resena-cabecera">
+                  <div class="avatar">{{ iniciales(resena.usuario) }}</div>
+                  <strong class="resena-autor">{{ resena.usuario }}</strong>
+                  <div class="estrellas">
+                    @for (e of estrellasLlenas(resena.calificacion); track e) {
+                      <i class="fas fa-star"></i>
+                    }
+                    @for (e of estrellasVacias(resena.calificacion); track e) {
+                      <i class="fas fa-star vacia"></i>
+                    }
+                  </div>
+                </div>
+                <p class="resena-texto">{{ resena.comentario }}</p>
+
+              </div>
+
+            }
+
+          }
+
+        </div>
+        <div class="col-lg-4">
+          <div class="panel-reserva">
+            <p class="precio">
+              <span class="precio-valor">{{ formatearPrecio(alojamiento.precioNoche) }}</span>
+              <span class="gris"> / noche</span>
+            </p>
+
+            @if (reservaCreada) {
+              <div class="reserva-exitosa">
+                <div class="exito-icono">✅</div>
+                <h5>¡Reserva confirmada!</h5>
+                <p>Código: <strong>{{ reservaCreada.id }}</strong></p>
+                <p>Total: <strong>{{ formatearPrecio(reservaCreada.total) }}</strong></p>
+                <a class="btn btn-reservar w-100" routerLink="/mis-reservas">Ver mis reservas</a>
+                <button class="btn btn-secundario w-100" (click)="nuevaReserva()">
+                  Hacer otra reserva
+                </button>
+              </div>
+
+            }
+
+            @if (!reservaCreada) {
+              <label class="etiqueta">Fecha de llegada</label>
+              <input
+                type="date"
+                class="form-control campo"
+                [(ngModel)]="fechaLlegada"
+                [min]="hoy"
+                (change)="reiniciarCotizacion()">
+
+              <label class="etiqueta">Fecha de salida</label>
+              <input
+                type="date"
+                class="form-control campo"
+                [(ngModel)]="fechaSalida"
+                [min]="hoy"
+                (change)="reiniciarCotizacion()">
+
+              <label class="etiqueta">Huéspedes</label>
+              <select
+                class="form-select campo"
+                [(ngModel)]="huespedes"
+                (change)="reiniciarCotizacion()">
+                @for (n of opcionesHuespedes; track n) {
+                  <option [ngValue]="n">{{ n }} huésped(es)</option>
+                }
+
+              </select>
+
+              @if (errores.length > 0) {
+                <div class="alerta-error">
+                  @for (error of errores; track error) {
+                    <p>{{ error }}</p>
+                  }
+
+                </div>
+
+              }
+
+              <button class="btn btn-cotizar w-100" (click)="calcularCotizacion()">
+                📋 Calcular cotización
+              </button>
+              <p class="nota-cargo">No se realizará ningún cargo todavía</p>
+              @if (cotizacion) {
+                <div class="cotizacion">
+                  <h5>Resumen de tu estancia</h5>
+                  <div class="linea">
+                    <span>{{ formatearPrecio(alojamiento.precioNoche) }} x {{ cotizacion.noches }} noche(s)</span>
+                    <span>{{ formatearPrecio(cotizacion.subtotal) }}</span>
+                  </div>
+
+                  <div class="linea">
+                    <span>Tarifa de limpieza</span>
+                    <span>{{ formatearPrecio(cotizacion.tarifaLimpieza) }}</span>
+                  </div>
+
+                  <div class="linea">
+                    <span>Tarifa de servicio (10 %)</span>
+                    <span>{{ formatearPrecio(cotizacion.tarifaServicio) }}</span>
+                  </div>
+
+                  <div class="linea linea-total">
+                    <span>Total</span>
+                    <span>{{ formatearPrecio(cotizacion.total) }}</span>
+                  </div>
+
+                  @if (!mostrarFormulario) {
+
+                    <button class="btn btn-reservar w-100" (click)="abrirFormulario()">
+                      Reservar
+                    </button>
+
+                  }
+
+                  @if (mostrarFormulario) {
+                    <div class="formulario-reserva">
+                      <label class="etiqueta">Nombre del huésped</label>
+                      <input
+                        type="text"
+                        class="form-control campo"
+                        [(ngModel)]="nombreHuesped"
+                        placeholder="Ej. Laura Gómez">
+
+                      <label class="etiqueta">Correo electrónico</label>
+                      <input
+                        type="email"
+                        class="form-control campo"
+                        [(ngModel)]="correo"
+                        placeholder="Ej. laura@correo.com">
+
+                      @if (errorFormulario) {
+                        <p class="texto-error">{{ errorFormulario }}</p>
+                      }
+
+                      <button class="btn btn-reservar w-100" (click)="confirmarReserva()">
+                        Confirmar reserva
+                      </button>
+
+                      <button class="btn btn-secundario w-100" (click)="cancelarFormulario()">
+                        Cancelar
+                      </button>
+                    </div>
+                  }
+                </div>
+
+              }
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
