@@ -1,1 +1,401 @@
-<p>gestionalojamientocomponent works!</p>
+<div class="container my-5">
+
+  <!-- el formulario  -->
+  <div class="card shadow-sm border-0 p-4 rounded-4 mb-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold mb-0">
+        <span class="text-primary">
+          <i class="fa-solid fa-circle-plus"></i>
+        </span> Nuevo alojamiento
+      </h4>
+      <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+        <i class="fa-solid fa-circle-xmark"></i> Cancelar
+      </button>
+    </div>
+
+    <form (ngSubmit)="agregarAlojamiento()">
+
+      <!-- nombre y ciudad -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="nuevoAlojamiento.nombre" name="nombre"
+                 placeholder="Nombre del alojamiento" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Ciudad *</label>
+          <input type="text" class="form-control" [(ngModel)]="nuevoAlojamiento.ciudad" name="ciudad"
+                 placeholder="Ej: Bogotá" required>
+        </div>
+      </div>
+
+      <!-- ubicacion y tipo -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Ubicación / Dirección</label>
+          <input type="text" class="form-control" [(ngModel)]="nuevoAlojamiento.ubicacion" name="ubicacion"
+                 placeholder="Ej: El Poblado, Medellín">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Tipo *</label>
+          <select class="form-select" [(ngModel)]="nuevoAlojamiento.tipo" name="tipo">
+            <option value="Apartamento">Apartamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Cabaña">Cabaña</option>
+            <option value="Villa">Villa</option>
+            <option value="Finca">Finca</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- descripcion -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold small">Descripción</label>
+        <textarea class="form-control" rows="3" [(ngModel)]="nuevoAlojamiento.descripcion" name="descripcion"
+                  placeholder="Descripción del alojamiento..."></textarea>
+      </div>
+
+      <!-- imagen y precio -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Imagen (URL)</label>
+          <input type="text" class="form-control" [(ngModel)]="nuevoAlojamiento.imagenPrincipal" name="imagenPrincipal"
+                 placeholder="https://images.unsplash.com/photo-...">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Precio por noche (COP) *</label>
+          <input type="number" class="form-control" [(ngModel)]="nuevoAlojamiento.precioNoche" name="precioNoche"
+                 placeholder="100000">
+        </div>
+      </div>
+
+      <!-- limpieza y calificacion -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Tarifa de limpieza (COP)</label>
+          <input type="number" class="form-control" [(ngModel)]="nuevoAlojamiento.tarifaLimpieza" name="tarifaLimpieza"
+                 placeholder="20000">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Calificación (1–5)</label>
+          <input type="number" step="0.1" class="form-control" [(ngModel)]="nuevoAlojamiento.calificacion"
+                 name="calificacion" placeholder="4.5">
+        </div>
+      </div>
+
+      <!-- capacidad y habitaciones -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Capacidad (personas)</label>
+          <input type="number" class="form-control" [(ngModel)]="nuevoAlojamiento.capacidad" name="capacidad"
+                 placeholder="1">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Habitaciones</label>
+          <input type="number" class="form-control" [(ngModel)]="nuevoAlojamiento.habitaciones" name="habitaciones"
+                 placeholder="1">
+        </div>
+      </div>
+
+      <!-- camas y baños -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Camas</label>
+          <input type="number" class="form-control" [(ngModel)]="nuevoAlojamiento.camas" name="camas" placeholder="1">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Baños</label>
+          <input type="number" class="form-control" [(ngModel)]="nuevoAlojamiento.banos" name="banos" placeholder="1">
+        </div>
+      </div>
+
+      <!-- estado activo -->
+      <div class="mb-4 form-check">
+        <input type="checkbox" class="form-check-input" id="activoCheck" [(ngModel)]="nuevoAlojamiento.activo"
+               name="activo">
+        <label class="form-check-label small fw-semibold" for="activoCheck">
+          Activo (visible en el marketplace)
+        </label>
+      </div>
+
+      <!-- botones -->
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary px-4 py-2">
+          <i class="fa-solid fa-check"></i>
+          Crear alojamiento
+        </button>
+        <button type="button" class="btn btn-outline-secondary px-4 py-2">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- el toast con las notificaiones -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-success text-white">
+      <strong class="me-auto">Inversiones LR</strong>
+      <small>Justo ahora</small>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body bg-white rounded-bottom">
+      ¡Alojamiento creado y agregado al marketplace exitosamente!
+    </div>
+  </div>
+</div>
+
+
+<!-- tabla de los alojamientos -->
+<div class="card shadow-sm border-0 p-4 rounded-4">
+  <h4 class="fw-bold mb-4">Lista de alojamientos</h4>
+
+  <div class="table-responsive">
+    <table class="table align-middle mb-0">
+      <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">IMAGEN</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">CIUDAD</th>
+        <th scope="col">TIPO</th>
+        <th scope="col">CAPACIDAD</th>
+        <th scope="col">PRECIO/NOCHE</th>
+        <th scope="col">CALIFICACIÓN</th>
+        <th scope="col">ESTADO</th>
+        <th scope="col" class="text-end">ACCIONES</th>
+      </tr>
+      </thead>
+      <tbody>
+
+
+      <tr *ngFor="let item of listaAlojamientos; let i = index">
+        <th scope="row" class="text-muted">{{ i + 1 }}</th>
+        <td>
+          <img [src]="item.imagenPrincipal" alt="{{ item.nombre }}" class="tabla-imagen">
+        </td>
+        <td class="fw-bold text-dark">{{ item.nombre }}</td>
+        <td class="text-muted">{{ item.ciudad }}</td>
+        <td>
+          <span class="color-azul">{{ item.tipo }}</span>
+        </td>
+        <td>
+          <i class="fa-solid fa-people-group"></i>
+          {{ item.capacidad }}
+        </td>
+        <td class="color-verde">$ {{ item.precioNoche | number }}</td>
+        <td>
+          <i class="fa-solid fa-star"></i>
+          {{ item.calificacion }}
+        </td>
+        <td>
+              <span class="badge px-2 py-1 rounded-pill"
+                    [ngClass]="item.activo ? 'bg-success bg-opacity-10 text-success' : 'bg-danger bg-opacity-10 text-danger'">
+                 {{ item.activo ? 'Activo' : 'Inactivo' }}
+              </span>
+        </td>
+
+        <td class="text-end">
+          <div class="d-flex gap-1 justify-content-end">
+            <!--boton para ver lo del modal -->
+            <button type="button" class="btn btn-outline-secondary btn-sm px-2 py-1"
+                    data-bs-toggle="modal"
+                    data-bs-target="#detalleAlojamientoModal"
+                    (click)="seleccionarParaVer(item)">
+              <i class="fa-solid fa-eye"></i>Ver
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-sm px-2 py-1"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editarAlojamientoModal"
+                    (click)="seleccionarParaEditar(item)">
+              <i class="fa-solid fa-pencil"></i> Editar
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-sm px-2 py-1" (click)="eliminarAlojamiento(i)"><i
+              class="fa-solid fa-trash"></i> Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- modal con la finromacion -->
+  <div class="modal fade" id="detalleAlojamientoModal" tabindex="-1" aria-labelledby="detalleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content border-0 shadow rounded-4">
+
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold" id="detalleModalLabel">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Detalle del Alojamiento
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body" *ngIf="alojamientoSeleccionado">
+          <div class="row">
+            <!-- Imagen principal -->
+            <div class="col-md-6 mb-3 mb-md-0">
+              <img [src]="alojamientoSeleccionado.imagenPrincipal"
+                   [alt]="alojamientoSeleccionado.nombre"
+                   class="img-fluid rounded-4 shadow-sm img-detalle-modal">
+            </div>
+
+            <!-- informacion  -->
+            <div class="col-md-6">
+              <span class="badge bg-light text-primary border px-2 py-1 mb-2">{{ alojamientoSeleccionado.tipo }}</span>
+              <h4 class="fw-bold text-dark">{{ alojamientoSeleccionado.nombre }}</h4>
+              <p class="text-muted small mb-2"><i
+                class="fa-solid fa-location-pin"></i> {{ alojamientoSeleccionado.ubicacion }}
+                ({{ alojamientoSeleccionado.ciudad }})</p>
+
+              <p class="small text-secondary mb-3">{{ alojamientoSeleccionado.descripcion }}</p>
+
+              <h5 class="text-primary fw-bold mb-3">$ {{ alojamientoSeleccionado.precioNoche | number }} <small
+                class="text-muted fs-6">/ noche</small></h5>
+
+              <div class="d-flex gap-3 text-muted small">
+                <span><i
+                  class="fa-solid fa-user-group"></i> Capacidad: <strong>{{ alojamientoSeleccionado.capacidad }}</strong></span>
+                <span><i class="fa-solid fa-bed"></i> Camas: <strong>{{ alojamientoSeleccionado.camas }}</strong></span>
+                <span><i
+                  class="fa-solid fa-star"></i> Calificación: <strong>{{ alojamientoSeleccionado.calificacion }}</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- modal para editar el alojamiento -->
+  <div class="modal fade" id="editarAlojamientoModal" tabindex="-1" aria-labelledby="editarModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content border-0 shadow rounded-4">
+
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold" id="editarModalLabel">
+            <i class="fa-solid fa-pen-to-square text-primary"></i>
+            Editar Alojamiento
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <!-- Nombre y Ciudad -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Nombre *</label>
+                <input type="text" class="form-control" [(ngModel)]="alojamientoAEditar.nombre" name="editNombre"
+                       required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Ciudad *</label>
+                <input type="text" class="form-control" [(ngModel)]="alojamientoAEditar.ciudad" name="editCiudad"
+                       required>
+              </div>
+            </div>
+
+            <!-- ubi y Tipo -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Ubicación / Dirección</label>
+                <input type="text" class="form-control" [(ngModel)]="alojamientoAEditar.ubicacion" name="editUbicacion">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Tipo *</label>
+                <select class="form-select" [(ngModel)]="alojamientoAEditar.tipo" name="editTipo">
+                  <option value="Apartamento">Apartamento</option>
+                  <option value="Casa">Casa</option>
+                  <option value="Cabaña">Cabaña</option>
+                  <option value="Villa">Villa</option>
+                  <option value="Finca">Finca</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Descripción -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold small">Descripción</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="alojamientoAEditar.descripcion"
+                        name="editDescripcion"></textarea>
+            </div>
+
+            <!-- Imagen y Precio -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Imagen (URL)</label>
+                <input type="text" class="form-control" [(ngModel)]="alojamientoAEditar.imagenPrincipal"
+                       name="editImagen">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Precio por noche (COP) *</label>
+                <input type="number" class="form-control" [(ngModel)]="alojamientoAEditar.precioNoche"
+                       name="editPrecio">
+              </div>
+            </div>
+
+            <!-- Capacidad y Habitaciones -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Capacidad (personas)</label>
+                <input type="number" class="form-control" [(ngModel)]="alojamientoAEditar.capacidad"
+                       name="editCapacidad">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Habitaciones</label>
+                <input type="number" class="form-control" [(ngModel)]="alojamientoAEditar.habitaciones"
+                       name="editHabitaciones">
+              </div>
+            </div>
+
+            <!-- camas y baños -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Camas </label>
+                <input type="number" class="form-control" [(ngModel)]="alojamientoAEditar.cama" name="editCapacidad">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Baños </label>
+                <input type="number" class="form-control" [(ngModel)]="alojamientoAEditar.bano" name="editHabitaciones">
+              </div>
+            </div>
+
+            <!-- estado activo -->
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="editActivoCheck"
+                     [(ngModel)]="alojamientoAEditar.activo" name="editActivo">
+              <label class="form-check-label small fw-semibold" for="editActivoCheck">
+                Activo (visible en el marketplace)
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">Cancelar</button>
+
+          <!-- boton que guarda los cambios -->
+
+
+          <button type="button" class="btn btn-primary px-4 py-2" (click)="guardarEdicion()" data-bs-dismiss="modal">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar cambios
+          </button>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

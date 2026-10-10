@@ -1,7 +1,7 @@
 .hero-section {
   background-color: #0b1c3d;
-  width: 100vw;              /* ancho de el fondo */
-  position: relative;         /*Pa q se acomode*/
+  width: 100vw;
+  position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
@@ -17,7 +17,6 @@
   font-size: 12px
 }
 
-/*-------------------------------------------------*/
 .hero-badge {
   background-color: rgb(8 139 255 / 0.5);
   font-size: 11px;
@@ -44,7 +43,6 @@
   font-size: 12px;
 }
 
-/* --- TUS OTROS ESTILOS --- */
 .card {
   background-color: #ffffff;
   color: #000000;
@@ -56,7 +54,6 @@
   object-position: center;
 }
 
-/* Efecto Movimiento para tarjetas */
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

@@ -1,19 +1,16 @@
-/*Articulo centrado*/
 .custom-article-card {
   max-width: 900px;
   width: 90%;
   border: 1px solid #ddd;
 }
 
-/*Marco*/
 .contenedor-imagen {
   justify-content: center;
   align-items: center;
 }
 
-/*Para que no se desfigure la imagen*/
 .dimension-images {
   width: 100%;
   height: 380px;
-  object-fit: cover; /* Recorta proporcionalmente la imagen para llenar el contenedor */
+  object-fit: cover;
 }

@@ -6,6 +6,7 @@ import { Alojamientoscomponent } from './components/alojamientoscomponent/alojam
 import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 import { Gestionreservascomponent } from './components/gestionreservascomponent/gestionreservascomponent';
 import { Gestionalojamientocomponent } from './components/gestionalojamientocomponent/gestionalojamientocomponent';
+import { Detallealojamientocomponent } from './components/detallealojamientocomponent/detallealojamientocomponent';
 
 const routes: Routes = [
 
@@ -13,6 +14,7 @@ const routes: Routes = [
 
   { path: 'inicio', component: Iniciocomponent },
   { path: 'alojamientos', component: Alojamientoscomponent },
+  { path: 'alojamientos/:id', component: Detallealojamientocomponent },
   { path: 'mis-reservas', component: Misreservascomponent },
 
   { path: 'gestion-reservas', component: Gestionreservascomponent },

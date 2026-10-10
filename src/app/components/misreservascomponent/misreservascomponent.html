@@ -1,1 +1,130 @@
-<p>misreservascomponent works!</p>
+<div class="pagina container py-4">
+
+  <div class="encabezado">
+
+    <div>
+      <h1 class="titulo">Mis reservas</h1>
+
+      @if (reservas.length === 0) {
+        <p class="subtitulo">Aún no tienes reservas</p>
+      }
+
+      @if (reservas.length > 0) {
+        <p class="subtitulo">{{ reservas.length }} reserva(s) encontrada(s)</p>
+      }
+    </div>
+
+    <a class="boton-buscar" routerLink="/alojamientos">+ Buscar alojamiento</a>
+
+  </div>
+
+  @if (reservas.length === 0) {
+
+    <div class="estado-vacio">
+
+      <div class="estado-vacio-icono">📅</div>
+
+      <h4>No tienes reservas todavía</h4>
+
+      <p>Cuando reserves un alojamiento, aparecerá aquí con todos sus detalles.</p>
+
+    </div>
+
+  }
+
+  @if (reservas.length > 0) {
+
+    <div class="lista-reservas">
+
+      @for (reserva of reservas; track reserva.id) {
+
+        <div class="reserva-card">
+
+          <div class="reserva-imagen">
+
+            <img
+              [src]="reserva.alojamiento.imagen"
+              [alt]="reserva.alojamiento.nombre">
+
+          </div>
+
+          <div class="reserva-contenido">
+
+            <div class="fila-superior">
+
+              <p class="meta">
+                📍 {{ reserva.alojamiento.ciudad }} · Código: {{ reserva.id }}
+              </p>
+
+              @if (reserva.estado === 'CONFIRMADA') {
+                <span class="estado estado-confirmada">{{ reserva.estado }}</span>
+              }
+
+              @if (reserva.estado === 'CANCELADA') {
+                <span class="estado estado-cancelada">{{ reserva.estado }}</span>
+              }
+
+            </div>
+
+            <h2 class="reserva-nombre">
+              {{ reserva.alojamiento.nombre }}
+            </h2>
+
+            <div class="fila-datos">
+
+              <span>
+                📅 Llegada: <strong>{{ formatearFecha(reserva.fechaLlegada) }}</strong>
+              </span>
+
+              <span>
+                📅 Salida: <strong>{{ formatearFecha(reserva.fechaSalida) }}</strong>
+              </span>
+
+              <span>🌙 Noches: {{ reserva.noches }}</span>
+
+              <span>👥 Huéspedes: {{ reserva.huespedes }}</span>
+
+            </div>
+
+            <div class="fila-inferior">
+
+              <p class="huesped">
+                Huésped: <strong>{{ reserva.nombreHuesped }}</strong> · {{ reserva.correo }}
+              </p>
+
+              <div class="total">
+
+                <span class="total-etiqueta">Total pagado</span>
+
+                <span class="total-valor">
+                  {{ formatearPrecio(reserva.total) }}
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+  <div class="zona-pruebas">
+
+    <span>Pruebas:</span>
+
+    <button class="btn btn-sm btn-outline-secondary" (click)="cargarDemo()">
+      Cargar reservas de prueba
+    </button>
+
+    <button class="btn btn-sm btn-outline-secondary" (click)="borrarTodas()">
+      Borrar todas
+    </button>
+
+  </div>
+
+</div>

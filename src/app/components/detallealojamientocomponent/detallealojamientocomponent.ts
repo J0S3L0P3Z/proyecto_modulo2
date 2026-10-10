@@ -151,7 +151,7 @@ export class Detallealojamientocomponent implements OnInit {
     const noches = this.calcularNoches(this.fechaLlegada, this.fechaSalida);
     const subtotal = noches * this.alojamiento.precioNoche;
     const tarifaLimpieza = this.alojamiento.tarifaLimpieza;
-    const tarifaServicio = Math.round(subtotal * 0.1); // 10 % del subtotal
+    const tarifaServicio = Math.round(subtotal * 0.1);
 
     this.cotizacion = {
       noches: noches,

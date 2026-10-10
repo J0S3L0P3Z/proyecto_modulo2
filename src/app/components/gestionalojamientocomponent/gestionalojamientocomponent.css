@@ -1,0 +1,17 @@
+.color-verde{
+  color: #22b509 !important;
+}
+.color-azul{
+  color: #0072ff !important;
+}
+
+.tabla-imagen {
+  width: 75px;      /* ancho */
+  height: 45px;     /* alto */
+  object-fit: cover; /* el recorte de la imagen */
+}
+.img-detalle-modal {
+  height: 250px;
+  width: 100%; /* que ocupe el ancho de la columna */
+  object-fit: cover; /*el recorte  */
+}

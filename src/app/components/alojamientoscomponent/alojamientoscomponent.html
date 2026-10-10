@@ -1,1 +1,207 @@
-<p>alojamientoscomponent works!</p>
+<div class="container mt-4">
+
+  <div class="encabezado">
+
+    <h2>Alojamientos disponibles</h2>
+
+    <p>{{ alojamientosFiltrados.length }} resultados encontrados</p>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3">
+
+      <div class="filtros">
+
+        <h4>
+          <i class="fas fa-sliders-h"></i>
+          Filtros
+        </h4>
+
+        <div class="campo">
+
+          <label>Ubicación</label>
+
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="ubicacion"
+            (input)="filtrarAlojamientos()"
+            placeholder="Ej. Bogotá">
+
+        </div>
+
+        <div class="campo">
+
+          <label>Tipo de alojamiento</label>
+
+          <select
+            class="form-select"
+            [(ngModel)]="tipoSeleccionado"
+            (change)="filtrarAlojamientos()">
+
+            <option value="">Todos los tipos</option>
+
+            @for (tipo of tipos; track tipo) {
+
+              <option [value]="tipo">
+                {{ tipo }}
+              </option>
+
+            }
+
+          </select>
+
+        </div>
+
+        <div class="campo">
+
+          <label>Número de huéspedes</label>
+
+          <input
+            type="number"
+            class="form-control"
+            min="1"
+            [(ngModel)]="huespedes"
+            (input)="filtrarAlojamientos()"
+            placeholder="Ej. 4">
+
+        </div>
+
+        <div class="campo">
+
+          <label>Precio máximo (miles COP/noche)</label>
+
+          <input
+            type="number"
+            class="form-control"
+            min="1"
+            [(ngModel)]="precioMaximo"
+            (input)="filtrarAlojamientos()"
+            placeholder="Ej. 300">
+
+        </div>
+
+        <button
+          class="btn btn-limpiar w-100"
+          (click)="limpiarFiltros()">
+
+          <i class="fas fa-eraser"></i>
+          Limpiar filtros
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="row">
+
+        @for (alojamiento of alojamientosFiltrados; track alojamiento.id) {
+
+          <div class="col-md-4">
+
+            <div class="card tarjeta mb-4">
+
+              <div class="imagen">
+
+                <img
+                  [src]="alojamiento.imagenPrincipal"
+                  [alt]="alojamiento.nombre">
+
+                <span class="tipo">
+                  {{ alojamiento.tipo }}
+                </span>
+
+                <span class="capacidad">
+
+                  <i class="fas fa-users"></i>
+
+                  {{ alojamiento.capacidad }}
+
+                </span>
+
+              </div>
+
+              <div class="card-body">
+
+                <h5>
+                  {{ alojamiento.nombre }}
+                </h5>
+
+                <p class="ubicacion">
+
+                  <i class="fas fa-map-marker-alt"></i>
+
+                  {{ alojamiento.ciudad }}
+
+                </p>
+
+                <p class="calificacion">
+
+                  <strong>
+                    Calificación: {{ alojamiento.calificacion }}
+                  </strong>
+
+                </p>
+
+                <div class="servicios">
+
+                  @for (servicio of alojamiento.servicios; track servicio) {
+
+                    <span>
+                      {{ servicio }}
+                    </span>
+
+                  }
+
+                </div>
+
+                <div class="precio">
+
+                  <strong>
+                    ${{ alojamiento.precioNoche }}
+                  </strong>
+
+                  <span>
+                    / noche
+                  </span>
+
+                </div>
+
+                <button class="btn btn-ver w-100" routerLink="/alojamientos/{{ alojamiento.id }}">
+                  Ver alojamiento
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+      @if (alojamientosFiltrados.length === 0) {
+
+        <div class="sin-resultados">
+
+          <i class="fas fa-search"></i>
+
+          <h4>No se encontraron alojamientos</h4>
+
+          <p>Intenta cambiar los filtros.</p>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

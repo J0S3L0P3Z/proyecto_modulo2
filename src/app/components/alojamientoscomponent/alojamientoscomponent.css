@@ -1,0 +1,218 @@
+.container {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.encabezado {
+  margin-bottom: 30px;
+}
+
+.encabezado h2 {
+  color: #0b1f3a;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.encabezado p {
+  color: #777;
+  font-size: 14px;
+  margin: 0;
+}
+
+.filtros {
+  background-color: #0b1f3a;
+  border: 1px solid #0b1f3a;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.filtros h4 {
+  color: white;
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.filtros h4 i {
+  color: #d9bb7e;
+  margin-right: 7px;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.campo .form-control,
+.campo .form-select {
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+  font-size: 13px;
+  padding: 9px;
+}
+
+.campo .form-control:focus,
+.campo .form-select:focus {
+  border-color: #d9bb7e;
+  box-shadow: 0 0 0 2px rgba(217, 187, 126, 0.15);
+}
+
+.btn-limpiar {
+  background-color: #d9bb7e;
+  color: #0b1f3a;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.btn-limpiar:hover {
+  background-color: #c9a964;
+  color: #0b1f3a;
+}
+
+.btn-limpiar i {
+  color: #0b1f3a;
+  margin-right: 5px;
+}
+
+.tarjeta {
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 520px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.imagen {
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+}
+
+.imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tipo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #0b1f3a;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.capacidad {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #0b1f3a;
+  color: white;
+  padding: 5px 9px;
+  border-radius: 15px;
+  font-size: 11px;
+}
+
+.capacidad i {
+  color: #d9bb7e;
+  margin-right: 3px;
+}
+
+.tarjeta .card-body {
+  background-color: white;
+  padding: 18px;
+  height: 310px;
+}
+
+.tarjeta h5 {
+  color: #0b1f3a;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.ubicacion {
+  color: #0b1f3a;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.ubicacion i {
+  color: #d9bb7e;
+  margin-right: 5px;
+}
+
+.calificacion {
+  color: #0b1f3a;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.servicios {
+  min-height: 45px;
+  margin-bottom: 12px;
+}
+
+.servicios span {
+  color: #0b1f3a;
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.precio {
+  margin-bottom: 14px;
+}
+
+.precio strong {
+  color: #0b1f3a;
+  font-size: 18px;
+}
+
+.precio span {
+  color: #0b1f3a;
+  font-size: 12px;
+}
+
+.btn-ver {
+  background-color: #d9bb7e;
+  color: #0b1f3a;
+  border: none;
+  padding: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn-ver:hover {
+  background-color: #c9a964;
+  color: #0b1f3a;
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 50px;
+  color: #777;
+}
+
+.sin-resultados i {
+  color: #d9bb7e;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.sin-resultados h4 {
+  color: #0b1f3a;
+}
