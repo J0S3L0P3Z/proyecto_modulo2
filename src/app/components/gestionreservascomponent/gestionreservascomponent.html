@@ -1,1 +1,297 @@
-<p>gestionreservascomponent works!</p>
+<div class="container mt-4">
+  <div class="encabezado">
+    <div>
+      <h2>Gestión de reservas</h2>
+      <p>Administra las reservas de los alojamientos.</p>
+    </div>
+  </div>
+
+  <div class="resumen">
+    <strong>{{ reservas.length }}</strong>
+    <span>reservas registradas</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead>
+      <tr>
+        <th>Alojamiento</th>
+        <th>Huésped</th>
+        <th>Fecha de llegada</th>
+        <th>Fecha de salida</th>
+        <th>Noches</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        @if (reservas.length === 0) {
+          <tr>
+            <td colspan="8" class="texto-vacio">
+              No hay reservas registradas.
+            </td>
+          </tr>
+        }
+
+        @for (reserva of reservas; track reserva.id) {
+          <tr>
+            <td>
+              <div class="alojamiento-tabla">
+                @if (reserva.alojamiento.imagen) {
+                  <img
+                    [src]="reserva.alojamiento.imagen"
+                    [alt]="reserva.alojamiento.nombre"
+                    class="imagen-tabla"
+                  >
+                }
+
+                <div>
+                  <strong>{{ reserva.alojamiento.nombre }}</strong>
+                  <small>{{ reserva.alojamiento.ciudad }}</small>
+                </div>
+              </div>
+            </td>
+
+            <td>
+              <strong>{{ reserva.nombreHuesped }}</strong>
+              <small>{{ reserva.correo }}</small>
+            </td>
+
+            <td>{{ reserva.fechaLlegada }}</td>
+            <td>{{ reserva.fechaSalida }}</td>
+            <td>{{ reserva.noches }}</td>
+            <td>${{ reserva.total }}</td>
+
+            <td>
+              <span
+                class="estado"
+                [class.inactivo]="reserva.estado === 'CANCELADA'"
+              >
+                {{ reserva.estado }}
+              </span>
+            </td>
+
+            <td>
+              <div class="acciones">
+                <button
+                  type="button"
+                  class="btn-icono editar"
+                  title="Editar reserva"
+                  (click)="editarReserva(reserva)"
+                >
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+
+                <button
+                  type="button"
+                  class="btn-icono eliminar"
+                  title="Eliminar reserva"
+                  (click)="eliminarReserva(reserva.id)"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+@if (mostrarFormulario) {
+  <div class="fondo-modal" (click)="cerrarFormulario()">
+    <div class="modal-formulario" (click)="$event.stopPropagation()">
+      <div class="modal-encabezado">
+        <h3>{{ modoEdicion ? 'Editar reserva' : 'Crear reserva' }}</h3>
+
+        <button
+          type="button"
+          class="btn-cerrar"
+          title="Cerrar formulario"
+          (click)="cerrarFormulario()"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form #formReserva="ngForm" (ngSubmit)="guardarReserva()">
+        <div class="formulario-contenido">
+          @if (mensajeError) {
+            <div class="alert alert-danger">
+              {{ mensajeError }}
+            </div>
+          }
+
+          <h4>Información del alojamiento</h4>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="nombreAlojamiento">Nombre del alojamiento</label>
+              <input
+                id="nombreAlojamiento"
+                type="text"
+                class="form-control"
+                name="nombreAlojamiento"
+                [(ngModel)]="formulario.alojamiento.nombre"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="ciudad">Ciudad</label>
+              <input
+                id="ciudad"
+                type="text"
+                class="form-control"
+                name="ciudad"
+                [(ngModel)]="formulario.alojamiento.ciudad"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="imagen">URL de la imagen</label>
+            <input
+              id="imagen"
+              type="url"
+              class="form-control"
+              name="imagen"
+              [(ngModel)]="formulario.alojamiento.imagen"
+            >
+          </div>
+
+          <h4>Información del huésped</h4>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="nombreHuesped">Nombre del huésped</label>
+              <input
+                id="nombreHuesped"
+                type="text"
+                class="form-control"
+                name="nombreHuesped"
+                [(ngModel)]="formulario.nombreHuesped"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="correo">Correo electrónico</label>
+              <input
+                id="correo"
+                type="email"
+                class="form-control"
+                name="correo"
+                [(ngModel)]="formulario.correo"
+                required
+              >
+            </div>
+          </div>
+
+          <h4>Detalles de la reserva</h4>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="fechaLlegada">Fecha de llegada</label>
+              <input
+                id="fechaLlegada"
+                type="date"
+                class="form-control"
+                name="fechaLlegada"
+                [(ngModel)]="formulario.fechaLlegada"
+                [min]="modoEdicion ? formulario.fechaLlegada : fechaMinima"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="fechaSalida">Fecha de salida</label>
+              <input
+                id="fechaSalida"
+                type="date"
+                class="form-control"
+                name="fechaSalida"
+                [(ngModel)]="formulario.fechaSalida"
+                [min]="formulario.fechaLlegada || fechaMinima"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="huespedes">Número de huéspedes</label>
+              <input
+                id="huespedes"
+                type="number"
+                class="form-control"
+                name="huespedes"
+                [(ngModel)]="formulario.huespedes"
+                min="1"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="noches">Número de noches</label>
+              <input
+                id="noches"
+                type="number"
+                class="form-control"
+                [value]="calcularNoches()"
+                readonly
+              >
+            </div>
+          </div>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="total">Valor total</label>
+              <input
+                id="total"
+                type="number"
+                class="form-control"
+                name="total"
+                [(ngModel)]="formulario.total"
+                min="0"
+                required
+              >
+            </div>
+
+            <div class="campo">
+              <label for="estado">Estado de la reserva</label>
+              <select
+                id="estado"
+                class="form-control"
+                name="estado"
+                [(ngModel)]="formulario.estado"
+                required
+              >
+                <option value="CONFIRMADA">Confirmada</option>
+                <option value="CANCELADA">Cancelada</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-acciones">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="cerrarFormulario()"
+          >
+            Cancelar
+          </button>
+
+          <button type="submit" class="btn btn-primary">
+            {{ modoEdicion ? 'Guardar cambios' : 'Crear reserva' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

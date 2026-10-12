@@ -1,1 +1,318 @@
-<p>gestionalojamientocomponent works!</p>
+<div class="container mt-4">
+  <div class="encabezado">
+    <div>
+      <h2>Gestión de alojamientos</h2>
+      <p>Administra los alojamientos de Inversiones LR</p>
+    </div>
+  </div>
+
+  <div class="boton-crear">
+    <button
+      type="button"
+      class="btn-crear"
+      (click)="abrirFormulario()">
+      <i class="fa-solid fa-plus"></i>
+      Crear alojamiento
+    </button>
+  </div>
+
+  <div class="resumen">
+    <strong>{{ alojamientos.length }}</strong>
+    <span>alojamientos registrados</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead>
+      <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Tipo</th>
+        <th>Capacidad</th>
+        <th>Precio por noche</th>
+        <th>Calificación</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        @for (alojamiento of alojamientos; track alojamiento.id) {
+          <tr>
+            <td>
+              <img
+                class="imagen-tabla"
+                [src]="alojamiento.imagenPrincipal"
+                [alt]="alojamiento.nombre">
+            </td>
+
+            <td>{{ alojamiento.nombre }}</td>
+            <td>{{ alojamiento.ciudad }}</td>
+            <td>{{ alojamiento.tipo }}</td>
+            <td>{{ alojamiento.capacidad }} personas</td>
+            <td>{{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}</td>
+            <td>{{ alojamiento.calificacion }}/5</td>
+
+            <td>
+              <span class="estado" [class.inactivo]="!alojamiento.activo">
+                {{ alojamiento.activo ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+
+            <td>
+              <div class="acciones">
+                <button
+                  type="button"
+                  class="btn-icono editar"
+                  title="Actualizar alojamiento"
+                  (click)="editarAlojamiento(alojamiento)">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+
+                <button
+                  type="button"
+                  class="btn-icono eliminar"
+                  title="Eliminar alojamiento"
+                  (click)="eliminarAlojamiento(alojamiento.id)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="9" class="text-center p-4">
+              No hay alojamientos registrados.
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+@if (mostrarFormulario) {
+  <div class="fondo-modal" (click)="cerrarFormulario()">
+    <div class="modal-formulario" (click)="$event.stopPropagation()">
+      <div class="modal-encabezado">
+        <h3>{{ modoEdicion ? 'Editar alojamiento' : 'Nuevo alojamiento' }}</h3>
+
+        <button
+          type="button"
+          class="btn-cerrar"
+          (click)="cerrarFormulario()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form #formAlojamiento="ngForm" (ngSubmit)="guardarAlojamiento()">
+        <div class="formulario-contenido">
+          <div class="mb-3">
+            <label for="nombre">Nombre *</label>
+            <input
+              id="nombre"
+              name="nombre"
+              class="form-control"
+              type="text"
+              [(ngModel)]="formulario.nombre"
+              required>
+          </div>
+
+          <div class="fila-campos">
+            <div class="mb-3">
+              <label for="ciudad">Ciudad *</label>
+              <input
+                id="ciudad"
+                name="ciudad"
+                class="form-control"
+                type="text"
+                [(ngModel)]="formulario.ciudad"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="tipo">Tipo *</label>
+              <select
+                id="tipo"
+                name="tipo"
+                class="form-control"
+                [(ngModel)]="formulario.tipo"
+                required>
+                <option value="Apartamento">Apartamento</option>
+                <option value="Casa">Casa</option>
+                <option value="Cabaña">Cabaña</option>
+                <option value="Loft">Loft</option>
+                <option value="Villa">Villa</option>
+                <option value="Finca">Finca</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="ubicacion">Ubicación</label>
+            <input
+              id="ubicacion"
+              name="ubicacion"
+              class="form-control"
+              type="text"
+              [(ngModel)]="formulario.ubicacion">
+          </div>
+
+          <div class="mb-3">
+            <label for="descripcion">Descripción</label>
+            <textarea
+              id="descripcion"
+              name="descripcion"
+              class="form-control"
+              rows="3"
+              [(ngModel)]="formulario.descripcion"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="imagenPrincipal">URL de la imagen principal</label>
+            <input
+              id="imagenPrincipal"
+              name="imagenPrincipal"
+              class="form-control"
+              type="text"
+              [(ngModel)]="formulario.imagenPrincipal"
+              placeholder="Ingrese la URL o ruta de la imagen">
+          </div>
+
+          <div class="fila-campos">
+            <div class="mb-3">
+              <label for="precioNoche">Precio por noche (COP) *</label>
+              <input
+                id="precioNoche"
+                name="precioNoche"
+                class="form-control"
+                type="number"
+                min="1"
+                [(ngModel)]="formulario.precioNoche"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="tarifaLimpieza">Tarifa de limpieza</label>
+              <input
+                id="tarifaLimpieza"
+                name="tarifaLimpieza"
+                class="form-control"
+                type="number"
+                min="0"
+                [(ngModel)]="formulario.tarifaLimpieza">
+            </div>
+          </div>
+
+          <div class="fila-campos">
+            <div class="mb-3">
+              <label for="capacidad">Capacidad</label>
+              <input
+                id="capacidad"
+                name="capacidad"
+                class="form-control"
+                type="number"
+                min="1"
+                [(ngModel)]="formulario.capacidad">
+            </div>
+
+            <div class="mb-3">
+              <label for="habitaciones">Habitaciones</label>
+              <input
+                id="habitaciones"
+                name="habitaciones"
+                class="form-control"
+                type="number"
+                min="0"
+                [(ngModel)]="formulario.habitaciones">
+            </div>
+          </div>
+
+          <div class="fila-campos">
+            <div class="mb-3">
+              <label for="camas">Camas</label>
+              <input
+                id="camas"
+                name="camas"
+                class="form-control"
+                type="number"
+                min="0"
+                [(ngModel)]="formulario.camas">
+            </div>
+
+            <div class="mb-3">
+              <label for="banos">Baños</label>
+              <input
+                id="banos"
+                name="banos"
+                class="form-control"
+                type="number"
+                min="0"
+                [(ngModel)]="formulario.banos">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="calificacion">Calificación (1 a 5)</label>
+            <input
+              id="calificacion"
+              name="calificacion"
+              class="form-control"
+              type="number"
+              min="1"
+              max="5"
+              step="0.1"
+              [(ngModel)]="formulario.calificacion">
+          </div>
+
+          <div class="mb-3">
+            <label for="servicios">Servicios (separados por coma)</label>
+            <input
+              id="servicios"
+              name="servicios"
+              class="form-control"
+              type="text"
+              [(ngModel)]="serviciosTexto"
+              placeholder="Wi-Fi, Cocina, Parqueadero">
+          </div>
+
+          <div class="mb-3">
+            <label for="reglas">Reglas (separadas por coma)</label>
+            <input
+              id="reglas"
+              name="reglas"
+              class="form-control"
+              type="text"
+              [(ngModel)]="reglasTexto"
+              placeholder="No fumar, No fiestas">
+          </div>
+
+          <label class="campo-estado">
+            <input
+              type="checkbox"
+              name="activo"
+              [(ngModel)]="formulario.activo">
+            Activo en el marketplace
+          </label>
+        </div>
+
+        <div class="modal-acciones">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="formAlojamiento.invalid">
+            {{ modoEdicion ? 'Guardar cambios' : 'Crear alojamiento' }}
+          </button>
+
+          <button
+            class="btn btn-secondary"
+            type="button"
+            (click)="cerrarFormulario()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

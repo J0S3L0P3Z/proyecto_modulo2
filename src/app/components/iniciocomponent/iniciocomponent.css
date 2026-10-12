@@ -1,0 +1,220 @@
+:host {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  color: #0b1f3a;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+strong, b {
+  font-weight: 700;
+}
+
+button, input, select, textarea {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+.clima-card {
+  width: 155px;
+  background-color: #ffffff;
+  margin-right: 0;
+}
+
+.clima-temperatura {
+  font-size: 1.1rem;
+  color: #0b1f3a;
+}
+
+.clima-texto {
+  font-size: 0.7rem;
+}
+
+.hero-section {
+  background-color: #0b1f3a;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  margin: 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.hero-section .container {
+  padding-top: 0 !important;
+}
+
+.color-dorado {
+  color: #c5a65a;
+}
+
+.color-blanco-tamanio {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.hero-badge {
+  background-color: rgba(197, 166, 90, 0.2);
+  color: #f1dca5;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 17px;
+  border: 1px solid rgba(197, 166, 90, 0.45);
+  border-radius: 50rem;
+  letter-spacing: 0.3px;
+}
+
+.hero-section h1 {
+  color: #ffffff !important;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.hero-section h1 .text-success {
+  color: #c5a65a !important;
+}
+
+.hero-description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #dce4ee !important;
+}
+
+.search-box-container {
+  max-width: 650px;
+  min-height: 60px;
+  padding: 7px !important;
+  border: 1px solid #e6e9ee;
+}
+
+.search-box-container .form-control {
+  font-size: 13px;
+  min-width: 0;
+}
+
+.search-btn {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: #0b1f3a;
+  border-color: #0b1f3a;
+}
+
+.search-btn:hover {
+  background-color: #16375e;
+  border-color: #16375e;
+}
+
+.stat-label {
+  font-size: 12px;
+}
+
+.hero-section h5 {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.hero-section .fa-star {
+  color: #c5a65a;
+  font-size: 13px;
+}
+
+.card {
+  background-color: #ffffff;
+  color: #26374b;
+  border: 1px solid #e6e9ee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-title {
+  color: #0b1f3a;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.card-text {
+  color: #687386;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.carousel-item img {
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel-indicators {
+  margin-bottom: 10px;
+}
+
+.carousel-indicators button {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgba(11, 31, 58, 0.5);
+  background-size: 55%;
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(11, 31, 58, 0.12) !important;
+}
+
+.container h3,
+.container h2,
+.container h1 {
+  color: #0b1f3a;
+  font-weight: 700;
+}
+
+.container h3 {
+  font-size: 23px;
+  letter-spacing: -0.4px;
+}
+
+.container h1 {
+  font-size: 27px;
+  letter-spacing: -0.5px;
+}
+
+.container h2 {
+  font-size: 24px;
+  letter-spacing: -0.4px;
+}
+
+.container > .container {
+  background: transparent;
+}

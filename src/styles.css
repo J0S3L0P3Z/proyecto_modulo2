@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  overscroll-behavior-y: none;
+}
+
+.toast-container {
+  position: fixed !important;
+  z-index: 999999 !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  top: auto !important;
+}
+
+.toast {
+  border-radius: 10px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+}
+
+.toast-title,
+.toast-message,
+.toast-close-button {
+  color: #ffffff !important;
+}
+
+.toast-success {
+  background-color: #198754 !important;
+  color: #ffffff !important;
+}
+
+.toast-error {
+  background-color: #dc3545 !important;
+  color: #ffffff !important;
+}
+
+.toast-warning {
+  background-color: #ffc107 !important;
+  color: #ffffff !important;
+}
+
+.toast-info {
+  background-color: #16375e !important;
+  color: #ffffff !important;
+}
+
+.toast-progress {
+  background-color: #ffffff !important;
+  opacity: 0.7 !important;
+}
+
+.toast-close-button {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
