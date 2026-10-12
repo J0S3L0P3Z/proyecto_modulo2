@@ -1,59 +1,113 @@
-# PROYECTOMODULODOS
+# Marketplace de Alojamientos - Inversiones LR
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+## 1. Descripción del proyecto
 
-## Development server
+Aplicación web desarrollada para Inversiones LR que permite consultar alojamientos temporales, gestionar propiedades, realizar cotizaciones.
 
-To start a local development server, run:
+## 2. Integrantes
 
-```bash
-ng serve
-```
+- Julio Esteban Hernandez Romero
+- Jose David Lopez Granados
+- Esteban Mogollón Escobar
+- Andres Felipe Castro Garcia
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 3. Tecnologías utilizadas
 
-## Code scaffolding
+- Angular
+- TypeScript
+- HTML5
+- CSS3
+- Bootstrap
+- Font Awesome
+- Animate.css
+- JSON
+- GitHub
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 4. APIs utilizadas
 
-```bash
-ng generate component component-name
-```
+- API del clima.
+- API de tasas de cambio de monedas.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 5. Requisitos para ejecutar la aplicación
 
-```bash
-ng generate --help
-```
+- Node.js.
+- npm.
+- Angular CLI.
+- WebStorm.
+- Navegador web.
+- Conexión a internet para consultar las APIs externas.
 
-## Building
+## 6. Instrucciones de instalación
 
-To build the project run:
+1. Descargar o clonar el repositorio desde GitHub.
+2. Abrir la carpeta PROYECTOMODULODOS en WebStorm.
+3. En la parte superior derecha de WebStorm, abrir el menú de configuraciones de ejecución mediante los tres puntos.
+4. Seleccionar Edit Configurations.
+5. Seleccionar la configuración install.
+6. Ejecutar la configuración para instalar las dependencias del proyecto.
 
-```bash
-ng build
-```
+## 7. Instrucciones de ejecución
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+1. Abrir el proyecto en WebStorm.
+2. Seleccionar la configuración Angular CLI Server.
+3. Ejecutar ng serve.
+4. Esperar a que termine la compilación.
+5. Abrir el navegador e ingresar a:
 
-## Running unit tests
+   http://localhost:4200/
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 8. Principales funcionalidades
 
-```bash
-ng test
-```
+### Gestión de alojamientos
+- Crear alojamientos.
+- Consultar alojamientos disponibles.
+- Actualizar alojamientos.
+- Eliminar alojamientos.
+- Filtrar alojamientos.
+- Consultar detalles, imágenes, ubicación, características, servicios y reglas.
 
-## Running end-to-end tests
+### Cotización de reservas
+- Seleccionar fechas de llegada y salida.
+- Seleccionar la cantidad de huéspedes.
+- Calcular el número de noches.
+- Calcular el subtotal del alojamiento.
+- Calcular la tarifa de limpieza.
+- Calcular la tarifa de servicio del 10 %.
+- Calcular el total de la reserva.
 
-For end-to-end (e2e) testing, run:
+### Gestión de reservas
+- Crear reservas.
+- Consultar reservas registradas.
+- Actualizar reservas.
+- Eliminar reservas.
+- Consultar la información y el costo de las reservas.
 
-```bash
-ng e2e
-```
+### Reseñas de huéspedes
+- Publicar reseñas.
+- Asignar calificaciones.
+- Registrar comentarios.
+- Consultar reseñas de los alojamientos.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Conversor de monedas
+- Ingresar cantidades para convertir.
+- Seleccionar la moneda de origen y destino.
+- Convertir entre COP, USD y EUR.
+- Consultar tasas de cambio mediante una API externa.
 
-## Additional Resources
+### Consulta del clima
+- Consultar información meteorológica mediante una API externa.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 9. Estructura general del proyecto
+
+
+El proyecto está organizado en la carpeta principal PROYECTOMODULODOS, que contiene la carpeta src, donde se encuentra el código fuente de la aplicación Angular.
+
+Dentro de src está la carpeta app, que contiene los componentes, las páginas, los servicios y los archivos principales de configuración de la aplicación, como app.module.ts y app-routing.module.ts`.
+
+También se encuentran las carpetas assets y public, destinadas a los recursos e imágenes utilizados en el proyecto, junto con archivos como index.html, main.ts y styles.css.
+
+En la raíz del proyecto están los archivos de configuración de Angular, las dependencias del proyecto (package.json) y el archivo README.md, que contiene la documentación del proyecto.
+
+## 10. Repositorio de GitHub
+
+https://github.com/J0S3L0P3Z/proyecto_modulo2/branches

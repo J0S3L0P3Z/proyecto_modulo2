@@ -111,6 +111,9 @@ h2 {
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
+  background-color: #0b1f3a;
+  color: #fff;
+  border-color: #263c58;
 }
 
 .table tbody td {
@@ -120,8 +123,8 @@ h2 {
   vertical-align: middle;
 }
 
-.table tbody tr:hover {
-  background-color: #fbfaf6;
+.table tbody tr:hover td {
+  background-color: #eaf0f7;
 }
 
 .imagen-tabla {

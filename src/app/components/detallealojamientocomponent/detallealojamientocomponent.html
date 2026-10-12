@@ -206,14 +206,226 @@
           </strong>
         </div>
 
+        <div class="conversor-moneda">
+          <h4>Conversor de monedas</h4>
+
+          <label for="cantidadMoneda">Cantidad</label>
+          <input
+            id="cantidadMoneda"
+            type="number"
+            class="form-control"
+            name="cantidadMoneda"
+            [(ngModel)]="cantidadMoneda"
+            min="0"
+            step="any"
+            placeholder="Escribe una cantidad">
+
+          <label for="monedaOrigen">Convertir de</label>
+          <select
+            id="monedaOrigen"
+            class="form-select"
+            name="monedaOrigen"
+            [(ngModel)]="monedaOrigen">
+            <option value="COP">Pesos colombianos (COP)</option>
+            <option value="USD">Dólares (USD)</option>
+            <option value="EUR">Euros (EUR)</option>
+          </select>
+
+          <label for="monedaDestino">Convertir a</label>
+          <select
+            id="monedaDestino"
+            class="form-select"
+            name="monedaDestino"
+            [(ngModel)]="monedaDestino">
+            <option value="COP">Pesos colombianos (COP)</option>
+            <option value="USD">Dólares (USD)</option>
+            <option value="EUR">Euros (EUR)</option>
+          </select>
+
+          @if (cargandoMonedas) {
+            <p class="estado-moneda">Consultando tasas de cambio...</p>
+          } @else if (errorMonedas) {
+            <p class="estado-moneda">No se pudieron consultar las tasas.</p>
+          } @else if (tasasMoneda) {
+            <div class="precio-convertido">
+              <span>Resultado</span>
+              <strong>
+                {{ convertirCantidad() | number:'1.0-2' }} {{ monedaDestino }}
+              </strong>
+            </div>
+          }
+        </div>
+
         <hr>
 
         <p class="nota-precio">
           El precio corresponde a una noche. La tarifa de limpieza se cobra aparte.
+          La cotización completa se calcula al seleccionar las fechas de la reserva.
         </p>
+
+        <button
+          type="button"
+          class="btn-reservar"
+          (click)="abrirFormularioReserva()">
+          <i class="fas fa-calendar-check"></i>
+          Hacer reserva
+        </button>
       </aside>
 
     </div>
+
+    @if (mostrarFormularioReserva) {
+      <div class="modal-reserva">
+        <div class="contenido-modal-reserva">
+
+          <button
+            type="button"
+            class="cerrar-modal"
+            (click)="cerrarFormularioReserva()">
+            &times;
+          </button>
+
+          <h3>Reservar alojamiento</h3>
+
+          <div class="alojamiento-seleccionado">
+            <img
+              [src]="alojamiento.imagenes?.[0] || alojamiento.imagenPrincipal"
+              [alt]="alojamiento.nombre">
+
+            <div>
+              <h4>{{ alojamiento.nombre }}</h4>
+              <p>{{ alojamiento.ciudad }}</p>
+              <strong>
+                {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
+                por noche
+              </strong>
+            </div>
+          </div>
+
+          <form (ngSubmit)="crearReserva()">
+
+            <div class="campo-reserva">
+              <label for="nombreHuesped">Nombre completo</label>
+              <input
+                id="nombreHuesped"
+                type="text"
+                class="form-control"
+                name="nombreHuesped"
+                [(ngModel)]="nombreHuesped"
+                placeholder="Escribe tu nombre"
+                required>
+            </div>
+
+            <div class="campo-reserva">
+              <label for="correoHuesped">Correo electrónico</label>
+              <input
+                id="correoHuesped"
+                type="email"
+                class="form-control"
+                name="correoHuesped"
+                [(ngModel)]="correoHuesped"
+                placeholder="correo@ejemplo.com"
+                required>
+            </div>
+
+            <div class="campos-fechas">
+              <div class="campo-reserva">
+                <label for="fechaLlegada">Fecha de llegada</label>
+                <input
+                  id="fechaLlegada"
+                  type="date"
+                  class="form-control"
+                  name="fechaLlegada"
+                  [(ngModel)]="fechaLlegada"
+                  [min]="fechaMinima"
+                  required>
+              </div>
+
+              <div class="campo-reserva">
+                <label for="fechaSalida">Fecha de salida</label>
+                <input
+                  id="fechaSalida"
+                  type="date"
+                  class="form-control"
+                  name="fechaSalida"
+                  [(ngModel)]="fechaSalida"
+                  [min]="fechaLlegada || fechaMinima"
+                  required>
+              </div>
+            </div>
+
+            <div class="campo-reserva">
+              <label for="huespedes">Cantidad de huéspedes</label>
+              <input
+                id="huespedes"
+                type="number"
+                class="form-control"
+                name="huespedes"
+                [(ngModel)]="huespedes"
+                min="1"
+                [max]="alojamiento.capacidad"
+                required>
+            </div>
+
+            <div class="resumen-reserva">
+              <h4>Resumen de cotización</h4>
+
+              <div>
+                <span>Noches</span>
+                <strong>{{ calcularNochesReserva() }}</strong>
+              </div>
+
+              <div>
+                <span>Precio por noche</span>
+                <strong>
+                  {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </strong>
+              </div>
+
+              <div>
+                <span>Subtotal de alojamiento</span>
+                <strong>
+                  {{ calcularSubtotalReserva() | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </strong>
+              </div>
+
+              <div>
+                <span>Tarifa de limpieza</span>
+                <strong>
+                  {{ alojamiento.tarifaLimpieza | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </strong>
+              </div>
+
+              <div>
+                <span>Tarifa de servicio (10 %)</span>
+                <strong>
+                  {{ calcularTarifaServicio() | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </strong>
+              </div>
+
+              <hr>
+
+              <div class="total-reserva">
+                <span>Total de la reserva</span>
+                <strong>
+                  {{ calcularTotalReserva() | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </strong>
+              </div>
+            </div>
+
+            @if (mensajeReserva) {
+              <p class="mensaje-reserva">{{ mensajeReserva }}</p>
+            }
+
+            <button type="submit" class="btn-reservar">
+              <i class="fas fa-check-circle"></i>
+              Confirmar reserva
+            </button>
+
+          </form>
+        </div>
+      </div>
+    }
 
   } @else {
 
@@ -227,5 +439,4 @@
     </div>
 
   }
-
 </div>

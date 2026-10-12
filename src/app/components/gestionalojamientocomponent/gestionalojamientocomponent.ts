@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlojamientoService } from '../../services/alojamientoservice';
-import { ToastrService } from '@openng/ngx-toastr';
+import { ToastrService } from '@relynn/ngx-toastr';
 
 interface Alojamiento {
   id: number;
@@ -166,7 +166,7 @@ export class Gestionalojamientocomponent {
       }
 
       this.alojamientos[indice] = alojamientoGuardado;
-      this.toastr.success('Alojamiento actualizado correctamente');
+      this.toastr.warning('Alojamiento actualizado correctamente');
     } else {
       let nuevoId = 1;
 
@@ -238,7 +238,7 @@ export class Gestionalojamientocomponent {
     if (alojamiento.activo) {
       this.toastr.success('Alojamiento activado');
     } else {
-      this.toastr.success('Alojamiento desactivado');
+      this.toastr.warning('Alojamiento desactivado');
     }
   }
 
@@ -262,6 +262,6 @@ export class Gestionalojamientocomponent {
 
     this.alojamientos = alojamientosActualizados;
     this.guardarEnLocalStorage();
-    this.toastr.success('Alojamiento eliminado correctamente');
+    this.toastr.error('Alojamiento eliminado correctamente');
   }
 }

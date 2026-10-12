@@ -1,1 +1,123 @@
-<p>misreservascomponent works!</p>
+<div class="container mt-4">
+  <div class="encabezado">
+    <div>
+      <h2>Mis reservas</h2>
+
+      @if (reservas.length === 0) {
+        <p>Aún no tienes reservas</p>
+      }
+
+      @if (reservas.length > 0) {
+        <p>{{ reservas.length }} reserva(s) encontrada(s)</p>
+      }
+    </div>
+
+    <a class="btn-buscar" routerLink="/alojamientos">
+      <i class="fa-solid fa-plus"></i>
+      Buscar alojamiento
+    </a>
+  </div>
+
+  @if (reservas.length === 0) {
+    <div class="sin-resultados">
+      <i class="fa-regular fa-calendar"></i>
+      <h4>No tienes reservas todavía</h4>
+      <p>Cuando reserves un alojamiento, aparecerá aquí con todos sus detalles.</p>
+
+      <a class="btn-buscar" routerLink="/alojamientos">
+        Explorar alojamientos
+      </a>
+    </div>
+  }
+
+  @if (reservas.length > 0) {
+    <div class="row">
+      @for (reserva of reservas; track reserva.id) {
+        <div class="col-12 mb-4">
+          <div class="card tarjeta-reserva">
+            <div class="row g-0">
+              <div class="col-md-4 imagen-reserva">
+                <img
+                  [src]="reserva.alojamiento.imagen"
+                  [alt]="reserva.alojamiento.nombre"
+                  (error)="ocultarImagen($event)">
+
+                <span class="imagen-respaldo">
+                  <i class="fa-solid fa-house"></i>
+                </span>
+              </div>
+
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="fila-superior">
+                    <p class="ubicacion">
+                      <i class="fa-solid fa-location-dot"></i>
+                      {{ reserva.alojamiento.ciudad }}
+                    </p>
+
+                    @if (reserva.estado === 'CONFIRMADA') {
+                      <span class="estado confirmada">CONFIRMADA</span>
+                    }
+
+                    @if (reserva.estado === 'CANCELADA') {
+                      <span class="estado cancelada">CANCELADA</span>
+                    }
+                  </div>
+
+                  <p class="codigo">Código de reserva: {{ reserva.id }}</p>
+
+                  <h5 class="nombre-alojamiento">
+                    {{ reserva.alojamiento.nombre }}
+                  </h5>
+
+                  <div class="datos-reserva">
+                    <p>
+                      <i class="fa-regular fa-calendar"></i>
+                      Llegada:
+                      <strong>{{ formatearFecha(reserva.fechaLlegada) }}</strong>
+                    </p>
+
+                    <p>
+                      <i class="fa-regular fa-calendar-check"></i>
+                      Salida:
+                      <strong>{{ formatearFecha(reserva.fechaSalida) }}</strong>
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-moon"></i>
+                      Noches: <strong>{{ reserva.noches }}</strong>
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-users"></i>
+                      Huéspedes: <strong>{{ reserva.huespedes }}</strong>
+                    </p>
+                  </div>
+
+                  <div class="detalle-inferior">
+                    <div class="datos-huesped">
+                      <p>
+                        <i class="fa-solid fa-user"></i>
+                        {{ reserva.nombreHuesped }}
+                      </p>
+
+                      <p>
+                        <i class="fa-solid fa-envelope"></i>
+                        {{ reserva.correo }}
+                      </p>
+                    </div>
+
+                    <div class="precio-reserva">
+                      <span>Total de la reserva</span>
+                      <strong>{{ formatearPrecio(reserva.total) }}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

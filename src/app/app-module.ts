@@ -1,7 +1,7 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ToastrModule } from '@openng/ngx-toastr';
+import { ToastrModule } from '@relynn/ngx-toastr';
 import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing-module';
@@ -33,9 +33,12 @@ import { Detallealojamientocomponent } from './components/detallealojamientocomp
     FormsModule,
     AppRoutingModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 6000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
+      closeButton: true,
+      progressBar: true,
+      newestOnTop: true
     }),
   ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

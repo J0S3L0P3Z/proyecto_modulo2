@@ -1,0 +1,248 @@
+:host {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  color: #0b1f3a;
+  min-height: 70vh;
+}
+
+.container {
+  max-width: 1400px;
+  padding: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #f6f7f9;
+  border-radius: 12px;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.encabezado h2 {
+  color: #0b1f3a;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.encabezado p {
+  color: #687386;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.btn-buscar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #0b1f3a;
+  border-radius: 6px;
+  background-color: #0b1f3a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.btn-buscar:hover {
+  background-color: #16375e;
+  border-color: #16375e;
+  color: #fff;
+}
+
+.sin-resultados {
+  padding: 55px 25px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #e6e9ee;
+  border-radius: 9px;
+}
+
+.sin-resultados > i {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 42px;
+  color: #0b1f3a;
+}
+
+.sin-resultados h4 {
+  margin-bottom: 10px;
+  color: #0b1f3a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sin-resultados p {
+  margin-bottom: 22px;
+  color: #687386;
+  font-size: 14px;
+}
+
+.tarjeta-reserva {
+  height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #e6e9ee;
+  border-radius: 9px;
+  box-shadow: 0 2px 7px rgba(11, 31, 58, 0.04);
+  transition: box-shadow 0.2s;
+}
+
+.tarjeta-reserva:hover {
+  box-shadow: 0 5px 15px rgba(11, 31, 58, 0.09);
+}
+
+.imagen-reserva {
+  position: relative;
+  min-height: 260px;
+  background-color: #e9edf2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen-reserva img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagen-respaldo {
+  color: #687386;
+  font-size: 40px;
+}
+
+.card-body {
+  padding: 24px;
+}
+
+.fila-superior {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ubicacion {
+  margin-bottom: 8px;
+  color: #687386;
+  font-size: 13px;
+}
+
+.ubicacion i {
+  margin-right: 5px;
+  color: #0b1f3a;
+}
+
+.estado {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: #e7f5ec;
+  color: #198754;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.estado.cancelada {
+  background-color: #fde8e7;
+  color: #c0392b;
+}
+
+.codigo {
+  margin-bottom: 8px;
+  color: #8791a1;
+  font-size: 11px;
+}
+
+.nombre-alojamiento {
+  margin-bottom: 20px;
+  color: #0b1f3a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.datos-reserva {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.datos-reserva p {
+  margin: 0;
+  color: #687386;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.datos-reserva i {
+  margin-right: 6px;
+  color: #0b1f3a;
+}
+
+.datos-reserva strong {
+  color: #26374b;
+  font-weight: 600;
+}
+
+.detalle-inferior {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 18px;
+}
+
+.datos-huesped {
+  min-width: 0;
+}
+
+.datos-huesped p {
+  margin-bottom: 7px;
+  color: #687386;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.datos-huesped p:last-child {
+  margin-bottom: 0;
+}
+
+.datos-huesped i {
+  width: 15px;
+  margin-right: 5px;
+  color: #0b1f3a;
+}
+
+.precio-reserva {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.precio-reserva span {
+  margin-bottom: 5px;
+  color: #687386;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.precio-reserva strong {
+  color: #0b1f3a;
+  font-size: 21px;
+  font-weight: 700;
+  white-space: nowrap;
+}

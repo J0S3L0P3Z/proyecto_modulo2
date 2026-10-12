@@ -1,6 +1,43 @@
 <div class="container py-4">
 
   <header class="hero-section text-white text-center py-5">
+
+  <div class="card shadow-sm border-0 rounded-3 ms-auto mb-3 clima-card">
+    <div class="card-body p-2">
+      <div class="d-flex align-items-center gap-2">
+        <i class="fa-solid fa-cloud-sun text-primary fs-4"></i>
+
+        <div>
+          <div class="small fw-bold">Bogotá</div>
+
+          @if (cargandoClima) {
+            <div class="text-muted clima-texto">
+              Consultando...
+            </div>
+          }
+
+          @if (clima; as datos) {
+            <div class="fw-bold clima-temperatura">
+              {{ datos.temperature_2m }} °C
+            </div>
+          }
+
+          @if (errorClima) {
+            <div class="text-muted clima-texto">
+              Sin información
+            </div>
+          }
+        </div>
+      </div>
+
+      @if (clima; as datos) {
+        <div class="text-muted clima-texto mt-1">
+          Humedad: {{ datos.relative_humidity_2m }}%
+        </div>
+      }
+    </div>
+  </div>
+
     <div class="container py-4">
       <span class="badge hero-badge mb-3">los mejores alojamientos que necesitas</span>
       <h1 class="display-5 fw-bold mb-2 animate__animated animate__fadeIn">
@@ -13,7 +50,9 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </span>
         <input type="text" class="form-control border-0 shadow-none px-2" placeholder="¿A dónde quieres viajar?">
-        <button class="btn btn-primary rounded-pill px-4 py-2 search-btn">Buscar alojamientos</button>
+        <button type="button" class="btn btn-primary rounded-pill px-4 py-2 search-btn" routerLink="/alojamientos">
+          Buscar alojamientos
+        </button>
       </div>
 
       <p class="text-light hero-description mb-4 animate__animated animate__fadeInUp animate__fast">
@@ -46,52 +85,81 @@
       <div>
         <h3 class="fw-bold mb-0">Destinos populares</h3>
       </div>
-      <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill px-3">Ver todos</a>
     </div>
 
     <div class="container">
       <div class="row g-3 animate__animated animate__slideInUp">
 
         <div class="col-6 col-md-2 text-center">
-          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
-            <div class="fs-2 mb-2">🏖️</div>
-            <span class="fw-bold small text-dark">Cartagena</span>
-          </div>
+          <a routerLink="/alojamientos" class="text-decoration-none">
+            <div class="card border-0 rounded-4 shadow-sm card-hover h-100 overflow-hidden">
+              <img src="assets/images/cartagena.jpg" class="w-100" alt="Cartagena"
+                   style="height: 120px; object-fit: cover;">
+              <div class="p-3">
+                <span class="fw-bold small text-dark">Cartagena</span>
+              </div>
+            </div>
+          </a>
         </div>
 
         <div class="col-6 col-md-2 text-center">
-          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
-            <div class="fs-2 mb-2">🌺</div>
-            <span class="fw-bold small text-dark">Medellín</span>
-          </div>
+          <a routerLink="/alojamientos" class="text-decoration-none">
+            <div class="card border-0 rounded-4 shadow-sm card-hover h-100 overflow-hidden">
+              <img src="assets/images/medellin.jpg" class="w-100" alt="Medellín"
+                   style="height: 120px; object-fit: cover;">
+              <div class="p-3">
+                <span class="fw-bold small text-dark">Medellín</span>
+              </div>
+            </div>
+          </a>
         </div>
 
         <div class="col-6 col-md-2 text-center">
-          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
-            <div class="fs-2 mb-2">🌊</div>
-            <span class="fw-bold small text-dark">Santa Marta</span>
-          </div>
+          <a routerLink="/alojamientos" class="text-decoration-none">
+            <div class="card border-0 rounded-4 shadow-sm card-hover h-100 overflow-hidden">
+              <img src="assets/images/santamarta.jpg" class="w-100" alt="Santa Marta"
+                   style="height: 120px; object-fit: cover;">
+              <div class="p-3">
+                <span class="fw-bold small text-dark">Santa Marta</span>
+              </div>
+            </div>
+          </a>
         </div>
 
         <div class="col-6 col-md-2 text-center">
-          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
-            <div class="fs-2 mb-2">🏙️</div>
-            <span class="fw-bold small text-dark">Bogotá</span>
-          </div>
+          <a routerLink="/alojamientos" class="text-decoration-none">
+            <div class="card border-0 rounded-4 shadow-sm card-hover h-100 overflow-hidden">
+              <img src="assets/images/bogota.jpg" class="w-100" alt="Bogotá"
+                   style="height: 120px; object-fit: cover;">
+              <div class="p-3">
+                <span class="fw-bold small text-dark">Bogotá</span>
+              </div>
+            </div>
+          </a>
         </div>
 
         <div class="col-6 col-md-2 text-center">
-          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
-            <div class="fs-2 mb-2">⛪</div>
-            <span class="fw-bold small text-dark">Villa de Leyva</span>
-          </div>
+          <a routerLink="/alojamientos" class="text-decoration-none">
+            <div class="card border-0 rounded-4 shadow-sm card-hover h-100 overflow-hidden">
+              <img src="assets/images/barranquilla.jpg" class="w-100" alt="Barranquilla"
+                   style="height: 120px; object-fit: cover;">
+              <div class="p-3">
+                <span class="fw-bold small text-dark">Barranquilla</span>
+              </div>
+            </div>
+          </a>
         </div>
 
         <div class="col-6 col-md-2 text-center">
-          <div class="p-3 border rounded-4 bg-white shadow-sm card-hover">
-            <div class="fs-2 mb-2">☕</div>
-            <span class="fw-bold small text-dark">Salento</span>
-          </div>
+          <a routerLink="/alojamientos" class="text-decoration-none">
+            <div class="card border-0 rounded-4 shadow-sm card-hover h-100 overflow-hidden">
+              <img src="assets/images/cali.jpg" class="w-100" alt="Cali"
+                   style="height: 120px; object-fit: cover;">
+              <div class="p-3">
+                <span class="fw-bold small text-dark">Cali</span>
+              </div>
+            </div>
+          </a>
         </div>
 
       </div>
@@ -118,19 +186,19 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="imagen/hotel_hilton.jpeg" class="d-block w-100" alt="Fachada del hotel">
+                <img src="assets/images/hotel_hilton.jpeg" class="d-block w-100" alt="Fachada del hotel">
               </div>
               <div class="carousel-item">
-                <img src="imagen/hilton-corferias-Cuarto.jpg" class="d-block w-100" alt="Habitación de lujo">
+                <img src="assets/images/hilton-corferias-Cuarto.jpg" class="d-block w-100" alt="Habitación de lujo">
               </div>
               <div class="carousel-item">
-                <img src="imagen/hotel_hilton_recepcion.jpg" class="d-block w-100" alt="Recepción">
+                <img src="assets/images/hotel_hilton_recepcion.jpg" class="d-block w-100" alt="Recepción">
               </div>
               <div class="carousel-item">
-                <img src="imagen/holte-hilton-corferias-cuarto2.jpg" class="d-block w-100" alt="Cuarto secundario">
+                <img src="assets/images/holte-hilton-corferias-cuarto2.jpg" class="d-block w-100" alt="Cuarto secundario">
               </div>
               <div class="carousel-item">
-                <img src="imagen/hotel_hilton_comedor.jpg" class="d-block w-100" alt="Comedor">
+                <img src="assets/images/hotel_hilton_comedor.jpg" class="d-block w-100" alt="Comedor">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselHilton" data-bs-slide="prev">
@@ -168,19 +236,19 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="imagen/Grand-Hyatt-edificio.jpg" class="d-block w-100" alt="Fachada del hotel">
+                <img src="assets/images/Grand-Hyatt-edificio.jpg" class="d-block w-100" alt="Fachada del hotel">
               </div>
               <div class="carousel-item">
-                <img src="imagen/grand-Hyatt-cuarto.jpg" class="d-block w-100" alt="Habitación de lujo">
+                <img src="assets/images/habitacion-lujo.jpg" class="d-block w-100" alt="Habitación de lujo">
               </div>
               <div class="carousel-item">
-                <img src="imagen/Grand-Hyatt-Pasillo.jpeg" class="d-block w-100" alt="Recepción">
+                <img src="assets/images/Grand-Hyatt-Pasillo.jpeg" class="d-block w-100" alt="Recepción">
               </div>
               <div class="carousel-item">
-                <img src="imagen/Grand-Hyatt-salon.jpg" class="d-block w-100" alt="Cuarto secundario">
+                <img src="assets/images/Grand-Hyatt-salon.jpg" class="d-block w-100" alt="Cuarto secundario">
               </div>
               <div class="carousel-item">
-                <img src="imagen/Grand-Hyatt-piscina.jpg" class="d-block w-100" alt="Comedor">
+                <img src="assets/images/Grand-Hyatt-piscina.jpg" class="d-block w-100" alt="Comedor">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselGrandHyatt"
@@ -220,19 +288,19 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="imagen/Four-Seasons-entrada.jpg" class="d-block w-100" alt="Fachada del hotel">
+                <img src="assets/images/Four-Seasons-entrada.jpg" class="d-block w-100" alt="Fachada del hotel">
               </div>
               <div class="carousel-item">
-                <img src="imagen/Four-Seasons-comedor.jpg" class="d-block w-100" alt="Habitación de lujo">
+                <img src="assets/images/Four-Seasons-comedor.jpg" class="d-block w-100" alt="Habitación de lujo">
               </div>
               <div class="carousel-item">
-                <img src="imagen/Four-Seasons-cuarto.jpg" class="d-block w-100" alt="Recepción">
+                <img src="assets/images/Four-Seasons-cuarto.jpg" class="d-block w-100" alt="Recepción">
               </div>
               <div class="carousel-item">
-                <img src="imagen/Four-Seasons-recepcion.jpg" class="d-block w-100" alt="Cuarto secundario">
+                <img src="assets/images/Four-Seasons-recepcion.jpg" class="d-block w-100" alt="Cuarto secundario">
               </div>
               <div class="carousel-item">
-                <img src="imagen/Four-Seasons-sala.jpg" class="d-block w-100" alt="Comedor">
+                <img src="assets/images/Four-Seasons-sala.jpg" class="d-block w-100" alt="Comedor">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselFourSeasons"
@@ -272,19 +340,19 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="imagen/w-entrada.jpg" class="d-block w-100" alt="Fachada del hotel">
+                <img src="assets/images/w-entrada.jpg" class="d-block w-100" alt="Fachada del hotel">
               </div>
               <div class="carousel-item">
-                <img src="imagen/w-cuarto.jpg" class="d-block w-100" alt="Habitación de lujo">
+                <img src="assets/images/w-cuarto.jpg" class="d-block w-100" alt="Habitación de lujo">
               </div>
               <div class="carousel-item">
-                <img src="imagen/w-recepcion.jpg" class="d-block w-100" alt="Recepción">
+                <img src="assets/images/w-recepcion.jpg" class="d-block w-100" alt="Recepción">
               </div>
               <div class="carousel-item">
-                <img src="imagen/w-cuarto2.jpg" class="d-block w-100" alt="Cuarto secundario">
+                <img src="assets/images/w-cuarto2.jpg" class="d-block w-100" alt="Cuarto secundario">
               </div>
               <div class="carousel-item">
-                <img src="imagen/w-recepcion2.jpg" class="d-block w-100" alt="Comedor">
+                <img src="assets/images/w-recepcion2.jpg" class="d-block w-100" alt="Comedor">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselWBogota" data-bs-slide="prev">
@@ -311,27 +379,25 @@
   <div class="d-flex gap-4 border-bottom mb-4 pb-2 overflow-auto">
   </div>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="mb-3">
     <h2 class="fw-bold">
       Sorprendete con nosotros
     </h2>
-    <a href="https://www.instagram.com/horizont_viajes?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" class="text-primary fw-bold text-decoration-none">
-      <i class="fa-brands fa-instagram"></i>
-      Ver pagina de instagram
-    </a>
   </div>
 
   <div class="mb-4">
-    <img src="imagen/anunciopublicitarioplaya.jpg" class="img-fluid rounded shadow-sm w-100" alt="Banner promocional de hoteles">
+    <img src="assets/images/anunciopublicitarioplaya.jpg" class="img-fluid rounded shadow-sm w-100" alt="Banner promocional de hoteles">
   </div>
-
+  <hr class="my-4">
   <div>
+
     <h2 class="fw-bold">
       Lo que nosotros buscamos
     </h2>
     <div class="mb-4">
-      <img src="imagen/anunciopublicitarioMedellin.jpg" class="img-fluid rounded shadow-sm w-100" alt="Banner promocional de hoteles">
+      <img src="assets/images/anunciopublicitarioMedellin.jpg" class="img-fluid rounded shadow-sm w-100" alt="Banner promocional de hoteles">
     </div>
+    <hr class="my-4">
   </div>
 
 </div>
