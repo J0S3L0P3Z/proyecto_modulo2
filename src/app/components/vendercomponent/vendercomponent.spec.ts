@@ -15,5 +15,7 @@ describe('Vendercomponent', () => {
     await fixture.whenStable();
   });
 
-
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
